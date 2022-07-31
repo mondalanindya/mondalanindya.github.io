@@ -1,10 +1,7 @@
 <p><span><strong>Anindya Mondal</strong></span></p>
 <table>
 <tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Contact:</strong></td>
-<td style="text-align: left;">(+91) 9564691453 <a href="https://t.me/+919564691453"></a></td>
-</tr>
+
 <tr class="even">
 <td style="text-align: left;"><strong>Email:</strong></td>
 <td style="text-align: left;"><a href="mailto:anindyam.jan@gmail.com">anindyam.jan@gmail.com</a> (preferred), <a href="mailto:anindyamondal@ieee.org">anindyamondal@ieee.org</a></td>
@@ -19,7 +16,7 @@
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Social:</strong></td>
-<td style="text-align: left;"><a href="https://www.linkedin.com/in/anindyamondal2001/">anindyamondal2001</a> <a href="https://twitter.com/anindyamondal01">@anindyamondal01</a> <a href="https://github.com/anindya2001">anindya2001</a></td>
+<td style="text-align: left;"><a href="https://www.linkedin.com/in/anindyamondal2001/">LinkedIn</a> <a href="https://twitter.com/anindyamondal01">Twitter</a> <a href="https://github.com/anindya2001">GitHub</a></td>
 </tr>
 </tbody>
 </table>
