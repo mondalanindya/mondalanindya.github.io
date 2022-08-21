@@ -1,1 +1,543 @@
+<!DOCTYPE html>
+<html lang='en'>
 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content='IE=edge'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Muhan Zhang's homepage">
+	<meta name="author" content="Muhan Zhang">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114851970-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-114851970-1');
+		gtag('config', 'UA-114851970-2');
+	</script>
+	<style type="text/css">
+		body {
+			font: 90%/1.2 Verdana, Arial, Helvetica, sans-serif;
+			margin: 0;
+			padding: 0;
+			color: #000;
+		}
+
+		h1 {
+			background-color: white;
+			color: #3477D5;
+			text-align: center;
+			font-family: "sans serif";
+			padding: 20px;
+		}
+
+		:root {
+			--main-bg-color: "red";
+		}
+
+		.container {
+			width: 960px;
+			margin: 0 auto;
+			/* the auto value on the sides, coupled with the width, centers the layout */
+			overflow: hidden;
+			/* this declaration makes the .container understand where the floated columns within ends and contain them */
+			padding-top: 30px;
+		}
+
+		#visitor {
+			color: white;
+		}
+
+		.sidebar1 {
+			float: left;
+			width: 200px;
+			background-color: #CBDDF6;
+			padding-bottom: 5px;
+		}
+
+		.content {
+			width: 650px;
+			padding-left: 35px;
+			padding-right: 10px;
+			float: left;
+		}
+
+		.sidebar1 li {
+			list-style-type: none;
+		}
+
+		.MsoNormal {
+			font-family: 'Georgia', 'serif';
+		}
+
+		.pub li {
+			font: 220 12px/1.5;
+		}
+
+		p {
+			font-family: verdana;
+			font-size: 14px;
+		}
+
+		p2 {
+			font-family: verdana;
+			font-size: 13px;
+		}
+
+		p3 {
+			font-family: verdana;
+			font-size: 12px;
+		}
+
+		li p {
+			font: 200 12px/1.5 Georgia, Times New Roman, serif;
+		}
+
+		li {
+			padding: 10px;
+			overflow: auto;
+		}
+
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<title>Muhan Zhang's Homepage</title>
+</head>
+
+<body>
+	<!-- <div id="header"><h1>Homepage of Muhan Zhang (张牧涵)</h1> </div> -->
+	<div class="container">
+		<div class="sidebar1">
+			<img src="./muhan20182.jpg" width="200" height="266.67" alt="picture" />
+			<!--<img src="./muhan.jpeg" width="250" height="420" alt="picture" /> -->
+			<!--<li><a href="CV_Muhan_Zhang.pdf">My CV</a></li> -->
+			<li><a href="#research">Research</a></li>
+			<li><a href="#pub">Publications</a></li>
+			<li><a href="#code">Software</a></li>
+			<!-- 			<li><a href="mailto:muhan@wustl.edu">Contact me</a></li>
+ -->
+		</div>
+		<div class="content">
+			<div class="info">
+				<h2 style="color:#3477D5;font-family:serif;font-size:28px;margin-top:0px"><a name="name">Muhan Zhang
+						(张牧涵)</a></h2>
+				<p style="font-family:serif;font-size:16px"> Email: muhan "at" pku "dot" edu "dot" cn <br>
+					<a target="_blank" href="https://scholar.google.com.hk/citations?user=OBBqkosAAAAJ&hl=en">Google
+						Scholar</a>,
+					<a target="_blank" href="https://github.com/muhanzhang">Github</a>,
+					<a target="_blank" href="https://github.com/GraphPKU">Lab github</a>
+				</p>
+				<hr>
+			</div>
+
+			<div class="bio">
+				<h3><a name="bio">Biography</a></h3>
+				<!--<h3><a name="bio">Biography</a> <a href="CV_Muhan_Zhang.pdf">(CV)</a></h3>-->
+				<p> Muhan is a tenure-track assistant professor and PhD advisor in the <a target="_blank"
+						href="http://www.ai.pku.edu.cn/">Institute for Artificial Intelligence</a> of Peking University
+					(since May 2021). He is co-affiliated with the School of Artificial Intelligence, Peking University.
+					He is also a research scientist at <a target="_blank" href="https://www.bigai.ai/">Beijing Institute
+						for General Artificial Intelligence (BIGAI)</a>.
+					Before coming back to China, he was a research scientist in Facebook AI (based in Menlo Park)
+					working on large-scale graph
+					learning systems and problems (2019-2021). He received his PhD degree in computer science from
+					Washington University in St. Louis (2015-2019), advised by Prof. <a target="_blank"
+						href="http://www.cse.wustl.edu/~ychen/">Yixin Chen</a>. Before WashU, he obtained a bachelor
+					degree
+					from Shanghai Jiao Tong University as a member of <a target="_blank"
+						href="http://english.seiee.sjtu.edu.cn/english/info/8338.htm">the IEEE pilot class</a>, where he
+					worked with Prof. <a target="_blank" href="https://mediabrain.sjtu.edu.cn/yazhang/">Ya Zhang</a> and
+					Prof. <a target="_blank" href="https://icne.sjtu.edu.cn/info/1026/1045.htm">Wenjun Zhang</a>.</p>
+				<!-- He did an internship at the Core Data Science and Feed Science teams of Facebook as a research scientist in the summer of 2018, working with <a target="_blank" href="http://anandbhaskar.me/">Anand Bhaskar</a>.-->
+				<hr>
+			</div>
+
+			<div class="research">
+				<h3><a name="research">Research Interests</a></h3>
+				<p><strong>Graph machine learning</strong>. Many real-world problems are inherently graph-structured,
+					e.g.,
+					social networks, biological networks, World Wide Web, molecules, circuits, brain, road networks,
+					knowledge graphs, etc. Many machine learning algorithms are also defined on graphs, such as neural
+					networks and graphical models. In this field, I develop algorithms and theories for learning over
+					graphs, and apply them to problems like link prediction, graph classification, graph structure
+					optimization, and knowledge graph reasoning. I am also interested in practical applications of graph
+					neural networks, including brain modeling, drug discovery, circuit design, and healthcare
+					applications.
+				<p>
+					<hr>
+			</div>
+
+			<div class="hiring">
+				<h3><a name="hiring">Prospective Students</a> </h3>
+				<p>
+					I am looking for highly motivated PhD/undergraduate students who are interested in doing graph ML
+					research with me.
+					Please shoot me an email if you meet at least three of the following criteria:
+					1) creativity and passion for research,
+					2) solid math skills,
+					3) solid coding skills,
+					4) good English (writing and speaking).
+					I will do my best to provide support for your success, including detailed guidance, plenty of
+					computation resources, and research freedom for senior PhDs. You are especially welcome if you have
+					interdisciplinary backgrounds (such as maths/physics/chemistry/biology) while proficient in coding.
+					For students in Peking University, you can schedule one on one chats with me at my office.
+
+					Due to the large number of applicants, the competition is intense this year and I may not be able to
+					respond to every email. Hope you understand!
+				</p>
+				<hr>
+			</div>
+
+			<div class="news">
+				<h3><a name="news">News</a></h3>
+
+				<div style="overflow-y: scroll; height:400px;">
+
+					<p2> 7/26/2022: Gave a talk on "How Powerful are Spectral Graph Neural Networks" at <a
+							href="https://ins.sjtu.edu.cn/topics/seminar/ai-math-colloquia">"AI + Math" Colloquia</a> of
+						Shanghai Jiao Tong University! <a href="https://ins.sjtu.edu.cn/seminars/2143
+						">Video link</a> (in English).<br /></p2>
+					<br>
+
+					<p2> 7/9/2022: Gave a talk on "How Powerful are Spectral Graph Neural Networks" at <a
+							href="https://mp.weixin.qq.com/s/-j26welb9v8jW2_PMzETtg">LOGS China</a>! Video link at <a
+							href="https://www.bilibili.com/video/BV1eU4y1D7Gv?share_source=copy_web
+					">Bilibili</a> (in Chinese).<br /></p2>
+					<br>
+					<p2> 5/16/2022: Three papers accepted at ICML-22! <a
+							href="https://arxiv.org/pdf/2205.07309.pdf">3DLinker</a>, <a
+							href="https://arxiv.org/pdf/2205.11172.pdf">JacobiConv</a>, and <a
+							href="https://arxiv.org/pdf/2203.10304.pdf">PACE</a>. 3DLinker is accepted as a long
+						presentation (118/5630)!<br /></p2>
+					<br>
+					<p2> 4/27/2022: Invited by Twitter (London and New York teams) to give a talk on Labeling Trick!
+						<br />
+					</p2>
+					<br>
+					<p2> 4/15/2022: I will serve as an area chair for NeurIPS-22. <br /></p2>
+					<br>
+					<p2> 4/9/2022: Invited by <a href="http://www.aitime.cn/">AI Time</a> to give a talk of <a
+							href="https://www.bilibili.com/video/BV1JS4y127g6">Nested GNNs and ShaDow</a> in the AI2000
+						Young Scientist Track!<br /></p2>
+					<br>
+					<p2> 3/6/2022: Elected to the 2022 <a
+							href="https://www.aminer.cn/ai2000?domain_ids=5dc122672ebaa6faa962bde8"> AI 2000 Most
+							Influential Scholars</a> by AMiner. Ranked 66th globally in the AAAI/IJCAI category.<br />
+					</p2>
+					<br>
+					<p2> 2/17/2022: Invited by <a href="http://www.aitime.cn/"> AI Time</a> to give a talk of <a
+							href="https://www.bilibili.com/video/BV1Xr4y167uz?from=search&seid=9289606471070121701&spm_id_from=333.337.0.0">Labeling
+							Trick</a>!<br /></p2>
+					<br>
+					<p2> 1/24/2022: Two papers accepted at ICLR-22! <a
+							href="https://openreview.net/forum?id=XLxhEjKNbXj">Subgraph Representation Learning GNN</a>,
+						<a href="https://openreview.net/forum?id=e95i1IHcWj">Positional Encoding for more powerful
+							GNN</a>!<br />
+					</p2>
+					<br>
+					<p2> 1/10/2022: Our Book <a href="https://link.springer.com/book/10.1007/978-981-16-6054-2">Graph
+							Neural
+							Networks: Foundations, Frontiers, and Applications</a> is published! A free version is
+						available
+						on
+						the <a href="https://graph-neural-networks.github.io/index.html">GNN Book Website</a>. Happy to
+						contribute one <a
+							href="https://graph-neural-networks.github.io/gnnbook_Chapter10.html">chapter</a>
+						on
+						GNN for link prediction!<br /></p2>
+					<br>
+					<p2> 12/22/2021: I will serve as a meta-reviewer (area chair) for ICML-22. <br /></p2>
+					<br>
+					<p2> 12/19/2021: Glad to organize a <a href="https://pair2struct-workshop.github.io/">graph
+							workshop</a>
+						at
+						ICLR-22: PAIR2Struct: Privacy, Accountability, Interpretability, Robustness, Reasoning on
+						Structured
+						Data. Welcome to contribute! <br /></p2>
+					<br>
+					<p2> 9/29/2021: Three papers accepted at NeurIPS! <a
+							href="https://arxiv.org/pdf/2010.16103.pdf">Labeling
+							Trick</a>, <a href="https://arxiv.org/pdf/2110.13197.pdf">Nested GNN</a> and <a
+							href="https://arxiv.org/pdf/2012.01380.pdf">ShaDow GNN</a>!<br /></p2>
+					<br>
+					<p2> 9/16/2021: Gave a presentation on Labeling Trick at 4Paradigm!<br /></p2>
+					<br>
+					<p2> 8/19/2021: Gave a presentation on Labeling Trick at Remin University of China!<br /></p2>
+					<br>
+					<p2> 3/13/2021: I am going to join Peking University as an assistant professor starting from May
+						2021.
+						Welcome to apply for PKU!<br /></p2>
+					<br>
+				</div>
+				<!-- <p2> 10/13/2020: SEAL achieved 1st places on 3 out of 4 OGB <a href="https://ogb.stanford.edu/docs/leader_linkprop/">leaderboard</a> link prediction tasks! Checkout our preprint <a href="https://arxiv.org/abs/2010.16103">paper</a>.<br /></p2>
+				<br>
+				<p2> 8/24/2020: Excited to give a keynote talk at the <a href="http://www.mlgworkshop.org/2020/">DLG/MLG workshop</a> of KDD 2020!<br /></p2>
+				<br>
+				<p2> 5/15/2020: HAP paper accepted at KDD 2020!<br /></p2>
+				<br>
+				<p2> 12/19/2019: IGMC paper accepted at ICLR 2020 as a spotlight presentation!<br /></p2>
+				<br>
+				<p2> 12/14/2019: Presented our D-VAE paper at NeurIPS 2019!<br /></p2>
+				<br>
+				<p2> 10/14/2019: Started full-time at Facebook!<br /></p2>
+				<br>
+				<p2> 9/30/2019: Successfully defended my PhD thesis on <a href="https://openscholarship.wustl.edu/cgi/viewcontent.cgi?article=1554&context=eng_etds">GNN</a>. Excited to complete PhD in 4 years!<br /></p2>
+				<br>
+				<p2> 3/8/2019: Had a wonderful journey at Amazon's Graduate Research Symposium. Make friends with a lot of young talented!<br /></p2>
+				<br> -->
+				<hr>
+			</div>
+
+
+			<div class="pub">
+				<h3><a name="pub">Publications</a></h3>
+				<ul class='pub'>
+					<h3 style="font-size:15px"><a name="year">2022</a></h3>
+					<li class=MsoNormal><strong>
+							<font color=#0aa0c0>[ICML-22-DyNN] </font>
+						</strong> Y. Yang, Y. Liang and <strong>M. Zhang</strong>, <b>PA-GNN: Parameter-Adaptive Graph
+							Neural Networks
+						</b>, <em>Workshop on Dynamic Neural Networks in International Conference on Machine Learning
+							(ICML-22-DyNN-Workshop)</em>, oral presentation, 2022.
+						(<a href="https://dynn-icml2022.github.io/spapers/paper_6.pdf">PDF</a>) </li>
+					<li class=MsoNormal><strong>
+							<font color=#0aa0c0>[VLDB-22] </font>
+						</strong> H. Yin, <strong>M. Zhang</strong>, Y. Wang, J. Wang and P. Li, <b>Algorithm and System
+							Co-design for Efficient Subgraph-based Graph Representation Learning
+						</b>, <em>Proc. of the VLDB Endowment (VLDB-22)</em>, volume 15, 2022.
+						(<a href="https://arxiv.org/abs/2202.13538">PDF</a>)(<a
+							href="https://github.com/Graph-COM/SUREL" target="_blank">Source code</a>) </li>
+					<li class=MsoNormal><strong>
+							<font color=#0aa0c0>[ICML-22] </font>
+						</strong> Y. Huang, X. Peng, J. Ma, and <strong>M. Zhang</strong>, <b>3DLinker: An E(3)
+							Equivariant Variational Autoencoder
+							for Molecular Linker Design</b>, <em>Proc. International Conference on Machine Learning
+							(ICML-22)</em>, long presentation, 2022. (Only 118 out of 5630 submissions are accepted as
+						long presentations)
+						(<a href="https://proceedings.mlr.press/v162/huang22g/huang22g.pdf">PDF</a>)(<a
+							href="https://github.com/YinanHuang/3DLinker" target="_blank">Source code</a>) </li>
+					<li class=MsoNormal><strong>
+							<font color=#0aa0c0>[ICML-22] </font>
+						</strong> X. Wang and <strong>M. Zhang</strong>, <b>How Powerful are Spectral Graph Neural
+							Networks</b>, <em>Proc. International Conference on Machine Learning
+							(ICML-22)</em>, 2022. (<a
+							href="https://proceedings.mlr.press/v162/wang22am/wang22am.pdf">PDF</a>)(<a
+							href="https://github.com/GraphPKU/JacobiConv" target="_blank">Source code</a>) </li>
+					<li class=MsoNormal><strong>
+							<font color=#0aa0c0>[ICML-22] </font>
+						</strong> Z. Dong*, <strong>M. Zhang*</strong>, F. Li, and Y. Chen, <b>PACE: A Parallelizable
+							Computation Encoder for Directed Acyclic Graphs</b>, <em>Proc. International Conference on
+							Machine Learning
+							(ICML-22)</em>, 2022. (*co-first author) (<a
+							href="https://proceedings.mlr.press/v162/dong22b/dong22b.pdf">PDF</a>)(<a
+							href="https://github.com/zehao-dong/PACE" target="_blank">Source code</a>)</li>
+					<li class=MsoNormal><strong>
+							<font color=#0aa0c0>[ICLR-22] </font>
+						</strong> X. Wang and <strong>M. Zhang</strong>, <b>GLASS: GNN with Labeling Tricks for Subgraph
+							Representation Learning</b>, <em>International Conference on Learning Representations
+							(ICLR-22)</em>, 2022. (<a href="https://openreview.net/pdf?id=XLxhEjKNbXj">PDF</a>)(<a
+							href="https://github.com/Xi-yuanWang/GLASS" target="_blank">Source code</a>)</li>
+					<li class=MsoNormal><strong>
+							<font color=#0aa0c0>[ICLR-22] </font>
+						</strong> H. Wang, H. Yin, <strong>M. Zhang</strong>, and P. Li, <b>Equivariant and Stable
+							Positional
+							Encoding for More Powerful Graph Neural Networks</b>, <em>International Conference on
+							Learning
+							Representations (ICLR-22)</em>, 2022. (<a
+							href="https://openreview.net/pdf?id=e95i1IHcWj">PDF</a>)(<a
+							href="https://github.com/Graph-COM/PEG" target="_blank">Source code</a>)</li>
+
+					<h3 style="font-size:15px"><a name="year">2021</a></h3>
+
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[NeurIPS-21] </font>
+						</strong><strong>M. Zhang</strong>, P. Li, Y. Xia, K. Wang, and L. Jin, <b>Labeling Trick: A
+							Theory
+							of Using Graph Neural Networks for Multi-Node Representation Learning</b>, <em>Advances in
+							Neural Information Processing Systems (NeurIPS-21)</em>, 2021. (<a
+							href="https://arxiv.org/pdf/2010.16103.pdf">PDF</a>)(<a
+							href="https://github.com/facebookresearch/SEAL_OGB" target="_blank">Source code</a>) </li>
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[NeurIPS-21] </font>
+						</strong><strong>M. Zhang</strong> and P. Li, <b>Nested Graph Neural Networks</b>, <em>Advances
+							in Neural Information Processing Systems (NeurIPS-21)</em>, 2021.
+						(<a href="https://arxiv.org/pdf/2110.13197.pdf">PDF</a>)
+						(<a href="https://github.com/muhanzhang/NestedGNN" target="_blank">Source code</a>) </li>
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[NeurIPS-21] </font>
+						</strong>H. Zeng, <strong>M. Zhang#</strong>, Y. Xia, A. Srivastava, A. Malevich, R. Kannan, V.
+						Prasanna, L. Jin, and R. Chen, <b>Decoupling the Depth and Scope of Graph Neural Networks</b>,
+						<em>Advances in Neural Information Processing Systems (NeurIPS-21)</em>, 2021. (#corresponding
+						author) (<a
+							href="https://proceedings.neurips.cc/paper/2021/file/a378383b89e6719e15cd1aa45478627c-Paper.pdf">PDF</a>)(<a
+							href="https://github.com/facebookresearch/shaDow_GNN" target="_blank">Source code</a>)
+					</li>
+
+					<h3 style="font-size:15px"><a name="year">2020</a></h3>
+
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[ICLR-20] </font>
+						</strong><strong>M. Zhang</strong> and Y. Chen, <b>Inductive Matrix Completion Based on Graph
+							Neural
+							Networks</b>, <em>International Conference on Learning Representations (ICLR-20)</em>,
+						spotlight
+						presentation, 2020. (<a href="https://openreview.net/pdf?id=ByxxgCEYDS">PDF</a>)(<a
+							href="https://github.com/muhanzhang/IGMC" target="_blank">Source code</a>) </li>
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[KDD-20] </font>
+						</strong><strong>M. Zhang</strong>, C. King, M. Avidan, and Y. Chen, <b>Hierarchical Attention
+							Propagation for Healthcare Representation Learning</b>, <em>Proc. ACM SIGKDD Conference on
+							Knowledge Discovery and Data Mining (KDD-20)</em>, 2020. (<a
+							href="http://muhanzhang.github.io/papers/KDD_2020.pdf">PDF</a>)(<a
+							href="https://github.com/muhanzhang/HAP" target="_blank">Source code</a>)</li>
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[MICCAI-20] </font>
+						</strong>X. Li, Y. Zhou, N. Dvornek, <strong>M. Zhang</strong>, J. Zhuang, P. Ventola, and J.
+						Duncan, <b>Pooling Regularized Graph Neural Network for fMRI Biomarker Analysis</b>, <em>Proc.
+							International Conference on Medical Image Computing and Computer-Assisted Intervention.
+							(MICCAI-20)</em>, 2020. (<a href="https://arxiv.org/pdf/2007.14589.pdf">PDF</a>)</li>
+
+					<h3 style="font-size:15px"><a name="year">2019</a></h3>
+
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[NeurIPS-19]</font>
+						</strong> <strong>M. Zhang</strong>, S. Jiang, Z. Cui, R. Garnett, and Y. Chen, <b>D-VAE: A
+							Variational Autoencoder for Directed Acyclic Graphs</b>, <em>Advances in Neural Information
+							Processing Systems (NeurIPS-19)</em>, 2019. (<a
+							href="https://arxiv.org/pdf/1904.11088.pdf">PDF</a>)(<a
+							href="https://github.com/muhanzhang/DVAE" target="_blank">Source code</a>) </li>
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[BJA-19] </font>
+						</strong>B. Fritz, Z. Cui, <strong>M. Zhang</strong>, Y. He, Y. Chen, A. Kronzer, A. Ben
+						Abdallah,
+						C. King, M. Avidan, <b>A Deep Learning Model for Predicting 30-day Postoperative Mortalit</b>,
+						<em>British Journal of Anaesthesia (BJA-19)</em>, 2019. (<a
+							href="https://www.sciencedirect.com/science/article/abs/pii/S0007091219306361">PDF</a>)
+					</li>
+					<h3 style="font-size:15px"><a name="year">2018</a></h3>
+
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[NeurIPS-18] </font>
+						</strong><strong>M. Zhang</strong> and Y. Chen, <b>Link Prediction Based on Graph Neural
+							Networks</b>, <em>Advances in Neural Information Processing Systems (NeurIPS-18)</em>,
+						spotlight
+						presentation, 2018. (Only 168 out of 4856 submissions are accepted as spotlight presentations)
+						(<a href="https://arxiv.org/pdf/1802.09691.pdf">PDF</a>)(<a
+							href="https://github.com/muhanzhang/SEAL" target="_blank">Source code</a>)(<a
+							href="https://muhanzhang.github.io/SEAL_website/SEAL.html" target="_blank">Website</a>)(<a
+							href="https://www.youtube.com/watch?v=a-3iFSQEZ2k&list=PLQ-RH60jtC9JqPqZq66WIjg3uk1P9U3EC&index=9&t=0s"
+							target="_blank">Video</a>) </li>
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[AAAI-18] </font>
+						</strong><strong>M. Zhang</strong>, Z. Cui, M. Neumann, and Y. Chen, <b>An End-to-End Deep
+							Learning
+							Architecture for Graph Classification</b>, <em>Proc. AAAI Conference on Artificial
+							Intelligence
+							(AAAI-18),</em> 2018. (<a
+							href="http://muhanzhang.github.io/papers/AAAI_2018_DGCNN.pdf">PDF</a>)(<a
+							href="http://muhanzhang.github.io/papers/AAAI_2018_DGCNN_appendix.pdf">Supplement</a>)(<a
+							href="https://github.com/muhanzhang/DGCNN" target="_blank">Source code</a>) </li>
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[AAAI-18] </font>
+						</strong><strong>M. Zhang</strong>, Z. Cui, S. Jiang, and Y. Chen, <b>Beyond Link Prediction:
+							Predicting Hyperlinks in Adjacency Space</b>, <em>Proc. AAAI Conference on Artificial
+							Intelligence (AAAI-18),</em> 2018. (<a
+							href="http://muhanzhang.github.io/papers/AAAI_2018_Hyperlink.pdf">PDF</a>)(<a
+							href="https://github.com/muhanzhang/HyperLinkPrediction" target="_blank">Source code</a>)
+					</li>
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[ICBK-18] </font>
+						</strong>Z. Cui, <strong>M. Zhang</strong>, and Y. Chen, <b>Deep Embedding Logistic
+							Regression</b>,
+						<em>Proc. IEEE International Conference on Big Knowledge (ICBK-18)</em>, 2018. (<a
+							href="https://www.cse.wustl.edu/~ychen/public/DELR.pdf">PDF</a>)
+					</li>
+					<h3 style="font-size:15px"><a name="year">2017</a></h3>
+
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[KDD-17] </font>
+						</strong><strong>M. Zhang</strong> and Y. Chen, <b>Weisfeiler-Lehman Neural Machine for Link
+							Prediction</b>, <em>Proc. ACM SIGKDD Conference on Knowledge Discovery and Data Mining
+							(KDD-17),</em> oral presentation, 2017. (Only 64 out of 748 submissions are accepted as oral
+						presentations) (<a href="http://muhanzhang.github.io/papers/KDD_2017.pdf">PDF</a>)(<a
+							href="https://youtu.be/dRC4T2gABS8" target="_blank">Video</a>)(<a
+							href="https://muhanzhang.github.io/papers/wlnm_muhan.pptx">Slides</a>)(<a
+							href="https://github.com/muhanzhang/LinkPrediction" target="_blank">Source code</a>) </li>
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[Bioinformatics-17] </font>
+						</strong>T. Oyetunde*, <strong>M. Zhang*</strong>, Y. Chen, Y. Tang, and C. Lo,
+						<strong>BoostGAPFILL: Improving the fidelity of metabolic network reconstructions through
+							integrated
+							constraint and pattern-based methods,</strong> &nbsp;<em>Bioinformatics</em>, 33(4):608-611,
+						2017. (*co-first author) (<a
+							href="https://muhanzhang.github.io/papers/Bioinformatics_2016.pdf">PDF</a>)
+					</li>
+
+					<h3 style="font-size:15px"><a name="year">2016</a></h3>
+
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[BMC Bioinformatics-16] </font>
+						</strong>L. He, S. Wu, <strong>M. Zhang</strong>, Y. Chen, and Y. Tang, <strong>WUFlux: an
+							open-source platform for 13C metabolic flux analysis of bacterial metabolism</strong>,
+						&nbsp;<em>BMC Bioinformatics</em>, 17.1 (2016): 444. (<a href="papers/BMC_2016.pdf">PDF</a>)
+					</li>
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[TNNLS-16] </font>
+						</strong>W. Cai, <strong>M. Zhang</strong>, and Y. Zhang, <strong>Batch Mode Active Learning for
+							Regression With Expected Model Change</strong>, &nbsp;<em>IEEE Transactions on Neural
+							Networks
+							and Learning Systems (TNNLS) </em>, (2016): 1-14. (<a href="papers/TNNLS_2016.pdf">PDF</a>)
+					</li>
+
+					<h3 style="font-size:15px"><a name="year">2015</a></h3>
+
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[IRJ-15] </font>
+						</strong>W. Cai, <strong>M. Zhang</strong>, and Y. Zhang, <strong> Active learning for ranking
+							with
+							sample density</strong>, &nbsp;<em>Information Retrieval Journal </em>, 18.2 (2015):
+						123-144.
+						(<a href="papers/IRJ_2015.pdf">PDF</a>)</li>
+					<li class=MsoNormal> <strong>
+							<font color=#0aa0c0>[TWEB-15] </font>
+						</strong>W. Cai, <strong>M. Zhang</strong>, and Y. Zhang, <strong> Active learning for Web
+							search
+							ranking via noise injection</strong>, &nbsp;<em>ACM Transactions on the Web (TWEB)</em>, 9.1
+						(2015): 3. (<a href="papers/TWEB_2015.pdf">PDF</a>)</li>
+				</ul>
+				<hr>
+			</div>
+
+			<div class="code">
+				<h3><a name="code">Software</a></h3>
+				<p><a target="_blank" href="https://github.com/muhanzhang/IGMC">IGMC (Inductive Graph-based Matrix
+						Completion)</a></p>
+				<p3>Code for paper "Inductive Matrix Completion Based on Graph Neural Networks"</p3>
+				<p><a target="_blank" href="https://github.com/muhanzhang/D-VAE">D-VAE (DAG Variational Autoencoder)</a>
+				</p>
+				<p3>Code for paper "D-VAE: A Variational Autoencoder for Directed Acyclic Graphs" on NeurIPS 2019</p3>
+				<p><a target="_blank" href="https://github.com/muhanzhang/SEAL">SEAL (learning from Subgraphs,
+						Embeddings,
+						and Attributes for Link prediction)</a></p>
+				<p3>Code for paper "Link Prediction Based on Graph Neural Networks" on NeurIPS 2018</p3>
+				<p><a target="_blank" href="https://github.com/muhanzhang/DGCNN">DGCNN (Deep-Graph-CNN)</a></p>
+				<p3>Code for paper "An End-to-End Deep Learning Architecture for Graph Classification" on AAAI 2018</p3>
+				<p><a target="_blank" href="https://github.com/muhanzhang/HyperLinkPrediction">Hyperlink Prediction
+						Toolbox</a></p>
+				<p3>Code for paper "Beyond Link Prediction: Predicting Hyperlinks in Adjacency Space" on AAAI 2018</p3>
+				<p><a target="_blank" href="https://github.com/muhanzhang/LinkPrediction">WLNM (Weisfeiler-Lehman Neural
+						Machine)</a></p>
+				<p3>Code for paper "Weisfeiler-Lehman Neural Machine for Link Prediction" on KDD 2017</p3>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
