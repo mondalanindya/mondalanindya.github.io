@@ -1,3 +1,5 @@
+remote_theme: ankitsultana/researcher@gem
+
 title: Researcher
 url: "https://ankitsultana.com"
 baseurl: "/researcher"
@@ -22,4 +24,4 @@ nav:
    link: "resume.pdf"
  - name: "Contact"
    link: "contact"
-remote_theme: ankitsultana/researcher@gem
+
