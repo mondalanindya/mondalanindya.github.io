@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="icons/qeqe.jpg" alt="Profile Picture" class="profile-pic">
+        <h2 class="profile-name">Anindya Mondal</h2>
+    
+        <div class="social-icons">
+            <!-- Replace the URLs with your actual social media profiles -->
+            <a href="https://scholar.google.com/citations?user=qjQmNJMAAAAJ&hl=en" target="_blank"><img src="icons/google-scholar.svg" alt="scholar"></a>
+            <a href="https://github.com/mondalanindya" target="_blank"><img src="icons/github-mark.svg" alt="github"></a>
+            <a href="https://www.researchgate.net/profile/Anindya-Mondal-3" target="_blank"><img src="icons/researchgate.svg" alt="researchgate"></a>
+            <a href="https://www.webofscience.com/wos/author/record/ACH-7007-2022" target="_blank"><img src="icons/clarivate.svg" alt="webofscience"></a>
+            
+        </div>
+
+    <div class="dark-mode-switch">
+      <input type="checkbox" id="darkModeToggle">
+      <label for="darkModeToggle"></label>
+    </div>
+</div>
+
+    <div class="dark-mode-switch">
+      <input type="checkbox" id="darkModeToggle">
+      <label for="darkModeToggle">
+        <span class="toggle-icon">&#9789;</span><!-- Moon icon (Unicode character) -->
+        <span class="toggle-icon">&#9728;</span><!-- Sun icon (Unicode character) -->
+      </label>
+    </div>
+  </div>
+
+  <script>
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    darkModeToggle.addEventListener('change', () => {
+      body.classList.toggle('dark-mode');
+    });
+  </script>
+</body>
+</html>
