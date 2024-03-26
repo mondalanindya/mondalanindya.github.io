@@ -8,7 +8,7 @@
     rel="stylesheet">
   <style>
     body {
-      font-family: 'Google Sans', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
       display: flex;
@@ -16,56 +16,74 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      background-color: #f2f2f2;
+      background-color: #f0f0f0;
       transition: background-color 0.3s ease-in-out;
     }
 
     .dark-mode {
-      background-color: #333;
-      color: #fff;
+      background-color: #121212;
+      color: #e0e0e0;
     }
 
     .container {
       text-align: center;
-      padding: 20px;
-      background: #fff; /* Added a light background to the container for better contrast */
-      border-radius: 20px; /* Rounded corners for the container */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added subtle shadow for depth */
-      max-width: 800px; /* Limiting the width for better reading experience */
+      padding: 40px;
+      background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Added gradient background */
+      border-radius: 30px; /* Rounded corners for the container */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+      max-width: 800px;
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-10px); /* subtle hover effect */
     }
 
     .profile-pic {
       width: 200px;
-      height: 200px; /* Adjusted to ensure the image is a perfect circle */
+      height: 200px;
       border-radius: 50%;
       margin-bottom: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow for the profile picture */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 5px solid white; /* Added border to the image */
     }
 
     .profile-name {
-      font-weight: bold;
-      font-size: 24px; /* Increased font size for better visibility */
+      font-weight: 700; /* Bolder font for the name */
+      font-size: 28px; /* Increased font size */
+      color: #333; /* Darker font color for contrast */
     }
 
     .tagline {
-      font-size: 18px; /* Adjusted for readability */
-      margin-bottom: 20px; /* Added more space below the tagline */
+      font-size: 18px;
+      margin-bottom: 25px;
+      color: #555; /* Slightly lighter color for the tagline */
     }
 
     .social-icons img {
       width: 40px;
       height: 40px;
-      margin: 10px; /* Increased spacing around icons */
-      transition: transform 0.3s ease-in-out;
-      border-radius: 50%; /* Rounded corners for icons */
+      margin: 10px;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      border-radius: 50%;
     }
 
     .social-icons img:hover {
-      transform: scale(1.2); /* Animation effect on hover */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+      transform: scale(1.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
-*/
+    /* Adding a subtle background pattern */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" patternUnits="userSpaceOnUse"><circle fill="%239C92AC" cx="1" cy="1" r="1"></circle></svg>');
+      z-index: -1;
+    }
   </style>
 <!--   <link rel="stylesheet" href="style2.css"> -->
 </head>
