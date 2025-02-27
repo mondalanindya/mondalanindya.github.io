@@ -1,118 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anindya Mondal</title>
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-  <link rel="stylesheet" href="style2.css">
-  <style>
-    body {
-      font-family: 'Google Sans', sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background-color: #f0f0f0;
-      transition: background-color 0.3s ease-in-out;
-    }
-
-    .dark-mode {
-      background-color: #121212;
-      color: #e0e0e0;
-    }
-
-    .container {
-      text-align: center;
-      padding: 40px;
-      background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Added gradient background */
-      border-radius: 30px; /* Rounded corners for the container */
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
-      max-width: 800px;
-      transition: transform 0.3s ease;
-    }
-
-    .container:hover {
-      transform: translateY(-10px); /* subtle hover effect */
-    }
-
-    .profile-pic {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      border: 5px solid white; /* Added border to the image */
-    }
-
-    .profile-name {
-      font-weight: 700; /* Bolder font for the name */
-      font-size: 28px; /* Increased font size */
-      color: #333; /* Darker font color for contrast */
-    }
-
-    .tagline {
-      font-size: 18px;
-      margin-bottom: 25px;
-      color: #555; /* Slightly lighter color for the tagline */
-    }
-
-    .social-icons img {
-      width: 40px;
-      height: 40px;
-      margin: 10px;
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-      border-radius: 50%;
-    }
-
-    .social-icons img:hover {
-      transform: scale(1.2);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Adding a subtle background pattern */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" patternUnits="userSpaceOnUse"><circle fill="%239C92AC" cx="1" cy="1" r="1"></circle></svg>');
-      z-index: -1;
-    }
-  </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6692955091926036" crossorigin="anonymous"></script>
-</head>
-<body>
-  <main class="container">
-    <section class="profile-info">
-      <img src="images/qeqe.jpg" alt="Profile Picture" class="profile-pic" loading="lazy">
-      <h1 class="profile-name">Anindya Mondal</h1>
-      <p class="tagline">Ph.D. candidate in CV/ML, focusing on adapting Foundation Vision-Language models for various vision tasks</p>
-      <div class="social-icons">
-        <a href="https://scholar.google.com/citations?user=qjQmNJMAAAAJ&hl=en" target="_blank"><img src="icons/google-scholar.svg" alt="Google Scholar" loading="lazy"></a>
-        <a href="assets/Anindya_CV.pdf" target="_blank"><img src="icons/cv.svg" alt="CV" loading="lazy"></a>
-        <a href="https://github.com/mondalanindya" target="_blank"><img src="icons/github-mark.svg" alt="GitHub" loading="lazy"></a>
-        <a href="https://www.webofscience.com/wos/author/record/ACH-7007-2022" target="_blank"><img src="icons/clarivate.svg" alt="Web of Science" loading="lazy"></a>
-        <a href="https://youtube.com/@anindyamondal?si=HQNKilH--rPsiC6X" target="_blank"><img src="icons/youtube.svg" alt="YouTube" loading="lazy"></a>
-        <a href="https://www.linkedin.com/in/anindyamondal2001/" target="_blank"><img src="icons/linkedin.svg" alt="LinkedIn" loading="lazy"></a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <title>Anindya Mondal</title> -->
+    <!-- Link to style2.css -->
+    <link rel="stylesheet" href="style2.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <!-- <h1>Anindya Mondal</h1> -->
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="teaching.html">Teaching</a></li>
+            <li><a href="Awards.html">Awards</a></li>
+            <li><a href="https://mondalanindya.github.io/assets/Anindya_CV.pdf">CV</a></li>
+          </ul>
+        </nav>
       </div>
-    </section>
-  </main>
-  <script>
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const body = document.body;
+    </header>
 
-    darkModeToggle.addEventListener('change', () => {
-      body.classList.toggle('dark-mode');
-    });
-  </script>
-  <center class="noclick">  
-    <a href='https://clustrmaps.com/site/1bt1g' title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=n&d=VUWsmjs9vT_QHmhAr6OuY_eMPD1CJyQ5FGORa626Ips&co=37a1ec&ct=ffffff' width="0.003" height="0.002" loading="lazy"/></a>
-  </center>
-</body>
+    <div class="container content">
+      <section id="home">
+        <div class="header-content">
+          <div class="about-text">
+            <h2 class="about-me-heading">Hey there!</h2>
+            <p class="about-me-text">
+              I’m Anindya Mondal, a PhD candidate at the Surrey Institute for People-Centred AI, CVSSP, University of Surrey. My research is focused on advancing representation learning in real-world settings, particularly exploring vision-language integration, multimodal learning, and dynamic scene interpretation through innovative techniques such as action recognition, text-to-image synthesis, object counting, and 3D/4D generation. I am driven by a passion to build smarter, more intuitive AI systems that bridge theory and practical application in our digital world.
+            </p>
+            <!-- Social Icons Section (no whitespace between <a> tags) -->
+            <div class="social-icons">
+              <a href="https://scholar.google.com/citations?user=qjQmNJMAAAAJ&hl=en" target="_blank"><img src="icons/google-scholar.svg" alt="Google Scholar" loading="lazy"></a><a href="assets/Anindya_CV.pdf" target="_blank"><img src="icons/cv.svg" alt="CV" loading="lazy"></a><a href="https://github.com/mondalanindya" target="_blank"><img src="icons/github-mark.svg" alt="GitHub" loading="lazy"></a><a href="https://www.webofscience.com/wos/author/record/ACH-7007-2022" target="_blank"><img src="icons/clarivate.svg" alt="Web of Science" loading="lazy"></a><a href="https://youtube.com/@anindyamondal?si=HQNKilH--rPsiC6X" target="_blank"><img src="icons/youtube.svg" alt="YouTube" loading="lazy"></a><a href="https://www.linkedin.com/in/anindyamondal2001/" target="_blank"><img src="icons/linkedin.svg" alt="LinkedIn" loading="lazy"></a>
+            </div>
+          </div>
+          <img src="images/qeqe.jpg" alt="Profile Picture" class="profile-pic" loading="lazy" />
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <!-- <div class="container">
+        <p>&copy; 2025 Anindya Mondal. All rights reserved.</p>
+      </div> -->
+    </footer>
+  </body>
 </html>
