@@ -42,7 +42,15 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
     nav { padding: 0.75rem 0; }
-    nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 1.1rem; flex-wrap: wrap; }
+    nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end; /* Add this line for right alignment */
+}
     nav a { color: var(--accent); text-decoration: none; font-weight: 600; transition: color 0.15s ease; }
     nav a:hover, nav a:focus-visible { color: #f59e0b; text-decoration: underline; outline: none; }
     .profile { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin: 1.25rem 0 2rem; }
