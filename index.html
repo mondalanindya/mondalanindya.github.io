@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Anindya Mondal</title>
+  <meta name="description" content="Personal webpage of Anindya Mondal, PhD candidate focusing on vision-language representation learning and practical scene understanding.">
   <!-- Soothing fonts: Source Sans 3 (body) + Source Serif 4 (headings) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,6 +83,23 @@
     a:focus-visible { outline: 1px solid #f59e0b; outline-offset: 1px; }
     .social a:focus-visible img { outline: none; box-shadow: 0 0 0 1px #f59e0b; }
 
+    .skip-link {
+      position: absolute;
+      left: -1000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      left: 0;
+      width: auto;
+      height: auto;
+      padding: 0.5rem 1rem;
+      background: var(--bg);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
     /* Dark mode */
   @media (prefers-color-scheme: dark) {
       :root {
@@ -99,6 +117,7 @@
   </style>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to main content</a>
   <header>
     <nav aria-label="Main navigation">
       <ul>
@@ -110,7 +129,7 @@
       </ul>
     </nav>
   </header>
-  <main>
+  <main id="main">
     <section id="home" class="profile">
       <img src="images/qeqe.jpg" alt="Anindya Mondal profile photo" loading="lazy">
       <div>
