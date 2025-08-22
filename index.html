@@ -83,6 +83,46 @@
     a:focus-visible { outline: 1px solid #f59e0b; outline-offset: 1px; }
     .social a:focus-visible img { outline: none; box-shadow: 0 0 0 1px #f59e0b; }
 
+    /* Publication list */
+    .publication-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .publication-item {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .publication-item img {
+      width: 120px;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .publication-content h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .publication-content .authors {
+      margin: 0.35rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .publication-content .venue {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    .publication-content .links a {
+      margin-right: 0.5rem;
+    }
+    .publication-content .author-me {
+      font-weight: 600;
+    }
+
     .skip-link {
       position: absolute;
       left: -1000px;
@@ -149,14 +189,80 @@
 
     <section id="publications">
       <h2>Publications and Preprints</h2>
-      <ul class="publications">
-        <li><strong>Under review:</strong> Anindya Mondal, Ayan Banerjee, Sauradip Nag, Josep Llàdos, Xiatian Zhu, Anjan Dutta, <em>CountLoop: Iterative Agent Guided High Instance Image Generation</em>. <a href="https://openreview.net/pdf?id=NZ0H1XtcZG" target="_blank">https://mondalanindya.github.io/CountLoop/</a></li>
-        <li><strong>AAAI ’25:</strong> Anindya Mondal, Sauradip Nag, Xiatian Zhu, Anjan Dutta, <em>OmniCount: Multi-label Object Counting with Semantic-Geometric Priors</em>. <a href="https://ojs.aaai.org/index.php/AAAI/article/view/34151" target="_blank">DOI: 10.1609/aaai.v39i18.34151</a></li>
-        <li><strong>ICCVW ’23:</strong> Anindya Mondal, Sauradip Nag, Joaquin M Prada, Xiatian Zhu, Anjan Dutta, <em>Actor-agnostic Multi-label Action Recognition with Multi-modal Query</em>. <a href="https://doi.org/10.1109/ICCVW60793.2023.00086" target="_blank">DOI: 10.1109/ICCVW60793.2023.00086</a></li>
-        <li><strong>ICASSP ’23:</strong> JAC Correa, JH Giraldo, Anindya Mondal, <em>Time-varying Signals Recovery via Graph Neural Networks</em>. <a href="https://doi.org/10.1109/ICASSP49357.2023.10096168" target="_blank">DOI: 10.1109/ICASSP49357.2023.10096168</a></li>
-        <li><strong>EUSIPCO’22:</strong> Anindya Mondal, et al., <em>Recovery of Missing Sensor Data by Reconstructing Time-varying Graph Signals</em>. <a href="https://doi.org/10.23919/EUSIPCO55093.2022.9909940" target="_blank">DOI: 10.23919/EUSIPCO55093.2022.9909940</a></li>
-        <li><strong>ICCVW ’21:</strong> Anindya Mondal, R Shashant, et al., <em>Moving Object Detection for Event-based Vision using Graph Spectral Clustering</em>. <a href="https://doi.org/10.1109/ICCVW54120.2021.00103" target="_blank">DOI: 10.1109/ICCVW54120.2021.00103</a></li>
-      </ul>
+      <div class="publication-list">
+        <div class="publication-item">
+          <img src="images/pipeline_v2.png" alt="CountLoop thumbnail" loading="lazy">
+          <div class="publication-content">
+            <h3>CountLoop: Iterative Agent Guided High Instance Image Generation</h3>
+            <p class="authors"><span class="author-me">Anindya Mondal</span>, Ayan Banerjee, Sauradip Nag, Josep Llàdos, Xiatian Zhu, Anjan Dutta</p>
+            <p class="venue">Under review</p>
+            <div class="links">
+              <a href="https://openreview.net/pdf?id=NZ0H1XtcZG" target="_blank">PDF</a>
+              <a href="https://mondalanindya.github.io/CountLoop/" target="_blank">Project Page</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="publication-item">
+          <img src="images/pipeline_v2.png" alt="OmniCount thumbnail" loading="lazy">
+          <div class="publication-content">
+            <h3>OmniCount: Multi-label Object Counting with Semantic-Geometric Priors</h3>
+            <p class="authors"><span class="author-me">Anindya Mondal</span>, Sauradip Nag, Xiatian Zhu, Anjan Dutta</p>
+            <p class="venue">AAAI ’25</p>
+            <div class="links">
+              <a href="https://ojs.aaai.org/index.php/AAAI/article/view/34151" target="_blank">DOI</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="publication-item">
+          <img src="images/pipeline_v2.png" alt="Actor-agnostic Action Recognition thumbnail" loading="lazy">
+          <div class="publication-content">
+            <h3>Actor-agnostic Multi-label Action Recognition with Multi-modal Query</h3>
+            <p class="authors"><span class="author-me">Anindya Mondal</span>, Sauradip Nag, Joaquin M. Prada, Xiatian Zhu, Anjan Dutta</p>
+            <p class="venue">ICCVW ’23</p>
+            <div class="links">
+              <a href="https://doi.org/10.1109/ICCVW60793.2023.00086" target="_blank">DOI</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="publication-item">
+          <img src="images/pipeline_v2.png" alt="Time-varying Signals Recovery thumbnail" loading="lazy">
+          <div class="publication-content">
+            <h3>Time-varying Signals Recovery via Graph Neural Networks</h3>
+            <p class="authors">JAC Correa, JH Giraldo, <span class="author-me">Anindya Mondal</span></p>
+            <p class="venue">ICASSP ’23</p>
+            <div class="links">
+              <a href="https://doi.org/10.1109/ICASSP49357.2023.10096168" target="_blank">DOI</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="publication-item">
+          <img src="images/pipeline_v2.png" alt="Recovery of Missing Sensor Data thumbnail" loading="lazy">
+          <div class="publication-content">
+            <h3>Recovery of Missing Sensor Data by Reconstructing Time-varying Graph Signals</h3>
+            <p class="authors"><span class="author-me">Anindya Mondal</span> et al.</p>
+            <p class="venue">EUSIPCO ’22</p>
+            <div class="links">
+              <a href="https://doi.org/10.23919/EUSIPCO55093.2022.9909940" target="_blank">DOI</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="publication-item">
+          <img src="images/pipeline_v2.png" alt="Moving Object Detection thumbnail" loading="lazy">
+          <div class="publication-content">
+            <h3>Moving Object Detection for Event-based Vision using Graph Spectral Clustering</h3>
+            <p class="authors"><span class="author-me">Anindya Mondal</span>, R. Shashant et al.</p>
+            <p class="venue">ICCVW ’21</p>
+            <div class="links">
+              <a href="https://doi.org/10.1109/ICCVW54120.2021.00103" target="_blank">DOI</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="awards">
