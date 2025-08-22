@@ -96,10 +96,15 @@
       align-items: flex-start;
     }
     .publication-item img {
-      width: 120px;
+      width: 200px;
       height: auto;
       border-radius: 6px;
       border: 1px solid var(--border);
+    }
+    @media (max-width: 600px) {
+      .publication-item img {
+        width: 150px;
+      }
     }
     .publication-content h3 {
       margin: 0;
