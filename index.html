@@ -111,6 +111,22 @@
     ul li { margin-bottom: 0.85rem; }
   section { scroll-margin-top: 60px; }
     section + section { margin-top: 1.8rem; padding-top: 1.0rem; border-top: 1px solid var(--border); }
+    #research-interests ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    #research-interests ul li {
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    #research-interests ul li:before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
     a { color: var(--accent); }
     a:hover { text-decoration: underline; }
     @media (max-width: 600px) {
@@ -194,6 +210,19 @@
     .publication-content .author-me {
       font-weight: 600;
     }
+    .publication-item.first-author {
+      position: relative;
+    }
+    .publication-item.first-author:before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
 
     .skip-link {
       position: absolute;
@@ -239,6 +268,7 @@
         <li><a href="#education">Education</a></li>
         <li><a href="#awards">Awards</a></li>
         <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#service">Service</a></li>
         <li><a href="assets/Anindya_CV.pdf">CV</a></li>
         <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"><span id="theme-icon">☀️</span></button></li>
       </ul>
@@ -257,8 +287,8 @@
           <a href="https://scholar.google.com/citations?user=qjQmNJMAAAAJ&hl=en" target="_blank" rel="noopener" title="Google Scholar"><img src="icons/google-scholar.svg" alt="Google Scholar"></a>
           <a href="https://github.com/mondalanindya" target="_blank" rel="noopener" title="GitHub"><img src="icons/github-mark.svg" alt="GitHub"></a>
           <a href="https://www.linkedin.com/in/anindyamondal2001/" target="_blank" rel="noopener" title="LinkedIn"><img src="icons/linkedin.svg" alt="LinkedIn"></a>
-          <a href="https://youtube.com/@anindyamondal?si=HQNKilH--rPsiC6X" target="_blank" rel="noopener" title="YouTube"><img src="icons/youtube.svg" alt="YouTube"></a>
           <a href="https://www.webofscience.com/wos/author/record/ACH-7007-2022" target="_blank" rel="noopener" title="Web of Science"><img src="icons/clarivate.svg" alt="Web of Science"></a>
+          <a href="https://youtube.com/@anindyamondal?si=HQNKilH--rPsiC6X" target="_blank" rel="noopener" title="YouTube"><img src="icons/youtube.svg" alt="YouTube"></a>
           <a href="assets/Anindya_CV.pdf" target="_blank" rel="noopener" title="CV (PDF)"><img src="icons/cv.svg" alt="CV"></a>
         </div>
       </div>
@@ -278,7 +308,7 @@
     <section id="publications">
       <h2>Publications</h2>
       <div class="publication-list">
-        <div class="publication-item">
+        <div class="publication-item first-author">
           <img src="images/pipeline.png" alt="CountLoop thumbnail" loading="lazy">
           <div class="publication-content">
             <h3>CountLoop: Iterative Agent Guided High Instance Image Generation</h3>
@@ -292,7 +322,7 @@
           </div>
         </div>
 
-        <div class="publication-item">
+        <div class="publication-item first-author">
           <img src="images/omni.png" alt="OmniCount thumbnail" loading="lazy">
           <div class="publication-content">
             <h3>OmniCount: Multi-label Object Counting with Semantic-Geometric Priors</h3>
@@ -305,7 +335,7 @@
           </div>
         </div>
 
-        <div class="publication-item">
+        <div class="publication-item first-author">
           <img src="images/iccvwpipeline.jpg" alt="Actor-agnostic Action Recognition thumbnail" loading="lazy">
           <div class="publication-content">
             <h3>Actor-agnostic Multi-label Action Recognition with Multi-modal Query</h3>
@@ -345,7 +375,7 @@
           </div>
         </div>
 
-        <div class="publication-item">
+        <div class="publication-item first-author">
           <img src="images/iccvw21.png" alt="Moving Object Detection thumbnail" loading="lazy">
           <div class="publication-content">
             <h3>Moving Object Detection for Event-based Vision using Graph Spectral Clustering</h3>
@@ -383,19 +413,25 @@
 
     <section id="awards">
       <h2>Awards & Recognition</h2>
-      <ul class="awards">
-        <li><strong>2024:</strong> AAAI 2025 Conference cum Travel Grant (worth $1200), Philadelphia, USA.</li>
-        <li><strong>2023:</strong> ICCV 2023 Conference Grant, Paris, France.</li>
-        <li><strong>2022:</strong> University of Surrey Postgraduate Studentship, UK.</li>
-        <li><strong>2022:</strong> Uplink Research Internship Award, ACM SIGKDD India Chapter.</li>
+      <ul>
+        <li><strong>AAAI 2025 Conference Travel Grant</strong> (worth $1200), Philadelphia, USA</li>
+        <li><strong>ICCV 2023 Conference Grant</strong>, Paris, France</li>
+        <li><strong>University of Surrey Postgraduate Studentship</strong> (2022 – 2025), Full PhD funding</li>
+        <li><strong>Uplink Research Internship Award</strong>, ACM SIGKDD India Chapter</li>
       </ul>
     </section>
 
     <section id="teaching">
-      <h2>Teaching & Peer Review</h2>
-      <ul class="experience">
+      <h2>Teaching</h2>
+      <ul>
         <li><strong>2023 – 2025:</strong> Teaching Assistant for Applied Machine Learning (EEEM068), Advanced Topics in Computer Vision and Deep Learning (EEEM071), and <a href="https://www.surrey.ac.uk/artificial-intelligence/cdt" target="_blank">UKRI Centre for Doctoral Training (CDT)</a> at the University of Surrey</li>
-        <li><strong>2022 – 2025:</strong> Peer reviewer for ICASSP, ICCV, CVPR, ECCV, NeurIPS, ICPR, Transactions on Signal Processing (TSP), Transactions on Signal and Information Processing over Networks (TSIPN).</li>
+      </ul>
+    </section>
+
+    <section id="service">
+      <h2>Academic Service</h2>
+      <ul>
+        <li><strong>Peer Reviewer:</strong> ICASSP, ICCV, CVPR, ECCV, NeurIPS, ICPR, IEEE Transactions on Signal Processing (TSP), IEEE Transactions on Signal and Information Processing over Networks (TSIPN)</li>
       </ul>
     </section>
   </main>
