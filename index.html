@@ -8,222 +8,374 @@
   <meta name="description" content="Anindya Mondal - PhD student at University of Surrey researching vision-language representation learning, multi-modal action recognition, object counting, and text-to-image synthesis.">
   <meta name="keywords" content="Computer Vision, AI, Machine Learning, Vision-Language Models, Action Recognition, Object Counting, Generative AI, Deep Learning, PhD Student">
   <meta name="author" content="Anindya Mondal">
-  <!-- Soothing fonts: Source Sans 3 (body) + Source Serif 4 (headings) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
   <style>
+    /* ===== jemdoc-inspired academic theme ===== */
     :root {
       --bg: #ffffff;
-      --text: #1f2937; /* slate-800 */
-      --muted: #6b7280; /* gray-500 */
-      --accent: #0a66c2; /* LinkedIn blue */
-      --accent-contrast: #003366;
-      --border: #e5e7eb; /* gray-200 */
+      --text: #333333;
+      --muted: #666666;
+      --heading: #527bbd;
+      --link: #224b8d;
+      --link-hover: #527bbd;
+      --sidebar-bg: #f6f6f6;
+      --sidebar-border: #dddddd;
+      --border: #aaaaaa;
+      --border-light: #dddddd;
+      --menu-active: #022b6d;
+      --code-bg: #f6f6f6;
+      --accent-bar: #527bbd;
+      --badge-conf-bg: #e8f0fe;
+      --badge-conf-text: #1a4794;
+      --badge-pre-bg: #fef7e0;
+      --badge-pre-text: #8a6914;
+      --profile-border: #527bbd;
     }
     body.dark-mode {
-      --bg: #0b0f13;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #93c5fd;
-      --accent-contrast: #dbeafe;
-      --border: #1f2937;
+      --bg: #1a1a2e;
+      --text: #d4d4d8;
+      --muted: #a1a1aa;
+      --heading: #7db4e0;
+      --link: #93c5fd;
+      --link-hover: #bdd8fc;
+      --sidebar-bg: #16213e;
+      --sidebar-border: #2a2a4a;
+      --border: #3f3f5a;
+      --border-light: #2a2a4a;
+      --menu-active: #bdd8fc;
+      --code-bg: #16213e;
+      --accent-bar: #7db4e0;
+      --badge-conf-bg: #1e3a5f;
+      --badge-conf-text: #93c5fd;
+      --badge-pre-bg: #3d3520;
+      --badge-pre-text: #fcd34d;
+      --profile-border: #7db4e0;
     }
-    body.dark-mode .social a img { 
-      background: transparent; 
-      border: 0; 
-      box-shadow: none; 
-      filter: invert(1) brightness(1.1) contrast(1.05); 
-    }
-    body.dark-mode header { 
-      background: transparent; 
-      box-shadow: none; 
-    }
-    body.dark-mode nav a:hover, 
-    body.dark-mode nav a:focus-visible { 
-      color: #fbbf24; 
-    }
-    html { font-size: 18px; }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: var(--bg);
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 16px;
+      line-height: 1.6;
       color: var(--text);
-      max-width: none; /* allow full-width body; inner sections control width */
-      margin: 0 auto;
-      padding: 2rem 1rem 1.5rem 1rem;
-      line-height: 1.75;
-      scroll-behavior: smooth;
+      background: var(--bg);
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
     }
-    header, nav, main, footer { width: 100%; max-width: 1100px; margin: 0 auto; }
-    header {
-      position: sticky; top: 0; z-index: 5;
-      background: transparent;
-      -webkit-backdrop-filter: none;
-      backdrop-filter: none;
-      border-bottom: none;
-      box-shadow: none;
+
+    /* ===== Two-column jemdoc layout ===== */
+    #tlayout {
+      display: flex;
+      min-height: 100vh;
     }
-    nav { padding: 0.4rem 0; }
-    nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 0.9rem;
-  flex-wrap: wrap;
-  justify-content: flex-end; /* Right-align navigation links */
-  align-items: center;
-}
-    nav a { color: var(--accent); text-decoration: none; font-weight: 600; transition: color 0.15s ease; }
-    .theme-toggle {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 0.25rem;
-      line-height: 1;
-      transition: transform 0.2s ease;
+
+    /* --- Sidebar --- */
+    #layout-menu {
+      width: 200px;
+      min-width: 200px;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--sidebar-border);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
     }
-    .theme-toggle:hover {
-      transform: scale(1.15);
+    .menu-profile {
+      text-align: center;
+      padding: 0.5rem 1rem 1.2rem;
+      border-bottom: 1px solid var(--sidebar-border);
+      margin-bottom: 0.8rem;
     }
-    .theme-toggle:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-      border-radius: 4px;
+    .menu-profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--profile-border);
+      margin-bottom: 0.5rem;
     }
-    nav a:hover, nav a:focus-visible { color: #f59e0b; text-decoration: underline; outline: none; }
-    .profile { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin: 1.25rem 0 2rem; }
-    .profile img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid #f59e0b; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
-  h1, h2 { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; }
-  h1 { font-size: 2.1rem; line-height: 1.25; margin: 0 0 0.45rem 0; font-weight: 600; color: var(--accent-contrast); letter-spacing: -0.005em; }
-  h2 { font-size: 1.22rem; line-height: 1.35; margin: 1.6rem 0 0.85rem 0; font-weight: 600; color: var(--accent-contrast); border-left: 3px solid #f59e0b; padding-left: 9px; }
-    p { color: var(--text); }
-    #home p:first-of-type { color: var(--muted); }
-    .social { display: flex; gap: 0.6rem; margin-top: 0.6rem; flex-wrap: wrap; }
-    .social a img { width: 28px; height: 28px; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.07); transition: transform 0.15s, box-shadow 0.15s; }
-    .social a img:hover { transform: scale(1.08); box-shadow: 0 3px 10px rgba(0,0,0,0.14); }
-    ul { padding-left: 1.15rem; }
-    ul li { margin-bottom: 0.85rem; }
-  section { scroll-margin-top: 60px; }
-    section + section { margin-top: 1.8rem; padding-top: 1.0rem; border-top: 1px solid var(--border); }
-    #research-interests ul {
-      list-style: none;
-      padding-left: 0;
+    .menu-profile .name {
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--heading);
+      line-height: 1.3;
     }
-    #research-interests ul li {
-      padding-left: 1.5rem;
-      position: relative;
-      margin-bottom: 1rem;
+    .menu-profile .title {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.3;
     }
-    #research-interests ul li:before {
-      content: "▸";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
+    .menu-category {
+      font-weight: bold;
+      font-size: 0.85rem;
+      color: var(--heading);
+      padding: 0.6rem 1rem 0.2rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .menu-item {
+      padding: 0.15rem 1rem 0.15rem 1.4rem;
+      line-height: 1.5;
+    }
+    .menu-item a {
+      color: var(--link);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .menu-item a:hover {
+      border-bottom: 1px dotted var(--muted);
+    }
+    .menu-item.current a {
+      color: var(--menu-active);
       font-weight: bold;
     }
-    a { color: var(--accent); }
-    a:hover { text-decoration: underline; }
-    @media (max-width: 600px) {
-      .profile { flex-direction: column; align-items: flex-start; }
-      .profile img { width: 90px; height: 90px; }
-      body, header, nav, main, footer { padding-left: 0.2rem; padding-right: 0.2rem; }
-    }
-    @media (min-width: 1000px) {
-      .profile img { width: 150px; height: 150px; }
-      h1 { font-size: 2.3rem; }
-    }
-    footer { margin-top: 2.2rem; font-size: 0.95rem; color: #9aa3ad; border-top: 1px solid var(--border); padding-top: 1.0rem; text-align: center; }
-    a:focus-visible { outline: 1px solid #f59e0b; outline-offset: 1px; }
-    .social a:focus-visible img { outline: none; box-shadow: 0 0 0 1px #f59e0b; }
 
-        /* Publication list */
-    .publication-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .publication-item {
+    .sidebar-social {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
-      align-items: flex-start;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.8rem 1rem 0;
+      border-top: 1px solid var(--sidebar-border);
+      margin-top: 0.8rem;
     }
-    .publication-item img {
-      width: 400px;
-      height: auto;
-      border-radius: 6px;
-      border: 1px solid var(--border);
+    .sidebar-social a img {
+      width: 22px;
+      height: 22px;
+      opacity: 0.75;
+      transition: opacity 0.15s;
     }
-    @media (max-width: 600px) {
-      .publication-item img {
-        width: 150px;
-      }
+    .sidebar-social a img:hover {
+      opacity: 1;
     }
-    .publication-content h3 {
-      margin: 0;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-    .publication-content .authors {
-      margin: 0.35rem 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .publication-content .venue {
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 0.5rem;
-    }
-    .publication-content .venue-badge {
-      display: inline-block;
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .venue-badge.conference {
-      background: #dbeafe;
-      color: #1e40af;
-    }
-    body.dark-mode .venue-badge.conference {
-      background: #1e3a8a;
-      color: #93c5fd;
-    }
-    .venue-badge.preprint {
-      background: #fef3c7;
-      color: #92400e;
-    }
-    body.dark-mode .venue-badge.preprint {
-      background: #78350f;
-      color: #fcd34d;
-    }
-    .publication-content .links a {
-      margin-right: 0.5rem;
-    }
-    .publication-content .author-me {
-      font-weight: 600;
-    }
-    .publication-item.first-author {
-      position: relative;
-    }
-    .publication-item.first-author:before {
-      content: "";
-      position: absolute;
-      left: -8px;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: var(--accent);
-      border-radius: 2px;
+    body.dark-mode .sidebar-social a img {
+      filter: invert(1) brightness(1.1) contrast(1.05);
     }
 
+    .theme-toggle {
+      display: block;
+      margin: 0.8rem auto 0;
+      background: none;
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0.2rem 0.6rem;
+      color: var(--muted);
+      transition: border-color 0.15s;
+    }
+    .theme-toggle:hover {
+      border-color: var(--heading);
+    }
+
+    /* --- Main content --- */
+    #layout-content {
+      flex: 1;
+      max-width: 850px;
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    /* ===== Typography ===== */
+    h1 {
+      font-size: 1.65em;
+      color: var(--heading);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.25rem;
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+    }
+    h2 {
+      font-size: 1.25em;
+      color: var(--heading);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.2rem;
+      margin: 2rem 0 0.8rem;
+      line-height: 1.2;
+    }
+    h3 {
+      font-size: 1.1em;
+      color: var(--heading);
+      margin: 0 0 0.3rem;
+    }
+    p {
+      margin: 0 0 0.8rem;
+      color: var(--text);
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { border-bottom: 1px dotted var(--muted); }
+
+    /* ===== Profile / Bio ===== */
+    .bio-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.2rem;
+    }
+    .bio-header img {
+      width: 160px;
+      height: 160px;
+      border-radius: 6px;
+      object-fit: cover;
+      border: 2px solid var(--profile-border);
+      flex-shrink: 0;
+    }
+    .bio-header .bio-text {
+      flex: 1;
+    }
+    .bio-text .subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .bio-text .affiliation {
+      margin-bottom: 0.6rem;
+    }
+    .bio-text .email {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95rem;
+    }
+
+    /* ===== Research Interests ===== */
+    .interests-list {
+      list-style: none;
+      padding: 0;
+    }
+    .interests-list li {
+      padding: 0.15rem 0 0.15rem 1.2rem;
+      position: relative;
+    }
+    .interests-list li:before {
+      content: "\25B8";
+      position: absolute;
+      left: 0;
+      color: var(--heading);
+    }
+
+    /* ===== Publications ===== */
+    .pub-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px dotted var(--border-light);
+      align-items: flex-start;
+    }
+    .pub-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .pub-item img {
+      width: 220px;
+      height: auto;
+      border-radius: 4px;
+      border: 1px solid var(--border-light);
+      flex-shrink: 0;
+    }
+    .pub-details h3 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+    .pub-details .authors {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 0.25rem;
+    }
+    .pub-details .author-me {
+      font-weight: bold;
+      color: var(--text);
+    }
+    .pub-details .venue-badge {
+      display: inline-block;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+      font-size: 0.82rem;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .venue-badge.conference {
+      background: var(--badge-conf-bg);
+      color: var(--badge-conf-text);
+    }
+    .venue-badge.preprint {
+      background: var(--badge-pre-bg);
+      color: var(--badge-pre-text);
+    }
+    .pub-details .pub-links {
+      font-size: 0.9rem;
+    }
+    .pub-details .pub-links a {
+      margin-right: 0.6rem;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.85rem;
+    }
+    .pub-item.first-author {
+      border-left: 3px solid var(--accent-bar);
+      padding-left: 0.8rem;
+    }
+
+    /* ===== News ===== */
+    .news-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .news-table td {
+      padding: 0.35rem 0;
+      vertical-align: top;
+      border-bottom: 1px dotted var(--border-light);
+    }
+    .news-table .news-date {
+      width: 110px;
+      font-weight: bold;
+      color: var(--heading);
+      white-space: nowrap;
+      font-size: 0.92rem;
+    }
+    .news-table .news-text {
+      font-size: 0.95rem;
+    }
+
+    /* ===== Education, Awards, etc. ===== */
+    .info-list {
+      list-style: none;
+      padding: 0;
+    }
+    .info-list li {
+      padding: 0.4rem 0;
+      border-bottom: 1px dotted var(--border-light);
+    }
+    .info-list li:last-child {
+      border-bottom: none;
+    }
+    .info-list .item-title {
+      font-weight: bold;
+    }
+    .info-list .item-meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* ===== Service ===== */
+    .service-list {
+      list-style: disc;
+      padding-left: 1.2rem;
+    }
+    .service-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      margin-top: 2.5rem;
+      padding: 0.8rem 0;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ===== Skip link ===== */
     .skip-link {
       position: absolute;
       left: -1000px;
@@ -239,231 +391,337 @@
       padding: 0.5rem 1rem;
       background: var(--bg);
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      z-index: 100;
     }
 
-    /* Dark mode */
-  @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0b0f13;
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --accent: #93c5fd;
-        --accent-contrast: #dbeafe;
-        --border: #1f2937;
+    /* ===== Focus ===== */
+    a:focus-visible {
+      outline: 2px solid var(--heading);
+      outline-offset: 2px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      #tlayout {
+        flex-direction: column;
       }
-  .social a img { background: transparent; border: 0; box-shadow: none; filter: invert(1) brightness(1.1) contrast(1.05); }
-  header { background: transparent; box-shadow: none; }
-      nav a:hover, nav a:focus-visible { color: #fbbf24; }
+      #layout-menu {
+        width: 100%;
+        min-width: unset;
+        height: auto;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 0.8rem;
+        gap: 0.3rem;
+        border-right: none;
+        border-bottom: 1px solid var(--sidebar-border);
+      }
+      .menu-profile {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        text-align: left;
+        padding: 0 0 0.6rem;
+        border-bottom: 1px solid var(--sidebar-border);
+        margin-bottom: 0.3rem;
+      }
+      .menu-profile img {
+        width: 60px;
+        height: 60px;
+      }
+      .menu-category {
+        display: none;
+      }
+      .menu-item {
+        padding: 0.15rem 0.5rem;
+      }
+      .sidebar-social {
+        width: 100%;
+        margin-top: 0.3rem;
+        padding-top: 0.5rem;
+      }
+      #layout-content {
+        padding: 1rem;
+      }
+      .bio-header {
+        flex-direction: column;
+      }
+      .bio-header img {
+        width: 120px;
+        height: 120px;
+      }
+      .pub-item {
+        flex-direction: column;
+      }
+      .pub-item img {
+        width: 100%;
+        max-width: 300px;
+      }
+      .news-table .news-date {
+        width: 90px;
+      }
     }
   </style>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to main content</a>
-  <header>
-    <nav aria-label="Main navigation">
-      <ul>
-        <li><a href="#home">About</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#awards">Awards</a></li>
-        <li><a href="#teaching">Teaching</a></li>
-        <li><a href="#service">Service</a></li>
-        <li><a href="assets/Anindya_CV.pdf">CV</a></li>
-        <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"><span id="theme-icon">☀️</span></button></li>
-      </ul>
+  <a href="#content" class="skip-link">Skip to main content</a>
+  <div id="tlayout">
+    <!-- ===== SIDEBAR ===== -->
+    <nav id="layout-menu" aria-label="Main navigation">
+      <div class="menu-profile">
+        <img src="images/qeqe.jpg" alt="Anindya Mondal" loading="lazy">
+        <div>
+          <div class="name">Anindya Mondal</div>
+          <div class="title">PhD Student<br>University of Surrey</div>
+        </div>
+      </div>
+
+      <div class="menu-category">Navigation</div>
+      <div class="menu-item current"><a href="#home">About</a></div>
+      <div class="menu-item"><a href="#publications">Publications</a></div>
+      <div class="menu-item"><a href="#news">News</a></div>
+      <div class="menu-item"><a href="#education">Education</a></div>
+      <div class="menu-item"><a href="#awards">Awards</a></div>
+      <div class="menu-item"><a href="#teaching">Teaching</a></div>
+      <div class="menu-item"><a href="#service">Service</a></div>
+
+      <div class="menu-category">Links</div>
+      <div class="menu-item"><a href="assets/Anindya_CV.pdf" target="_blank">CV (PDF)</a></div>
+      <div class="menu-item"><a href="https://scholar.google.com/citations?user=qjQmNJMAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a></div>
+      <div class="menu-item"><a href="https://github.com/mondalanindya" target="_blank" rel="noopener">GitHub</a></div>
+
+      <div class="sidebar-social" aria-label="Social links">
+        <a href="https://scholar.google.com/citations?user=qjQmNJMAAAAJ&hl=en" target="_blank" rel="noopener" title="Google Scholar"><img src="icons/google-scholar.svg" alt="Google Scholar"></a>
+        <a href="https://github.com/mondalanindya" target="_blank" rel="noopener" title="GitHub"><img src="icons/github-mark.svg" alt="GitHub"></a>
+        <a href="https://www.linkedin.com/in/anindyamondal2001/" target="_blank" rel="noopener" title="LinkedIn"><img src="icons/linkedin.svg" alt="LinkedIn"></a>
+        <a href="https://www.webofscience.com/wos/author/record/ACH-7007-2022" target="_blank" rel="noopener" title="Web of Science"><img src="icons/clarivate.svg" alt="Web of Science"></a>
+        <a href="https://youtube.com/@anindyamondal?si=HQNKilH--rPsiC6X" target="_blank" rel="noopener" title="YouTube"><img src="icons/youtube.svg" alt="YouTube"></a>
+        <a href="assets/Anindya_CV.pdf" target="_blank" rel="noopener" title="CV (PDF)"><img src="icons/cv.svg" alt="CV"></a>
+      </div>
+
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span id="theme-icon">&#9788;</span> Theme
+      </button>
     </nav>
-  </header>
-  <main id="main">
-    <section id="home" class="profile">
-      <img src="images/qeqe.jpg" alt="Anindya Mondal profile photo" loading="lazy">
-      <div>
-        <h1>Anindya Mondal</h1>
-        <p>PhD Student in Computer Vision and AI</p>
-        <p><a href="https://www.surrey.ac.uk/centre-vision-speech-signal-processing" target="_blank">Surrey Institute for People-Centred AI (CVSSP)</a>, University of Surrey</p>
-        <p>I am a third-year PhD student advised by <a href="https://sites.google.com/site/2adutta/" target="_blank">Dr. Anjan Dutta</a>, <a href="https://surrey-uplab.github.io/" target="_blank">Dr. Xiatian Zhu</a>, and <a href="https://www.surrey.ac.uk/people/joaquin-m-prada" target="_blank">Dr. Joaquin M. Prada</a>.</p>
-        <p>My research focuses on vision-language representation learning with applications in action recognition, object counting, and text-to-image synthesis. I aim to develop practical algorithms that enable robust scene understanding and generation in real-world settings by effectively integrating multi-modal signals.</p>
-        <p><strong>Email:</strong> a.mondal [at] surrey.ac.uk</p>
-        <div class="social" aria-label="Social links">
-          <a href="https://scholar.google.com/citations?user=qjQmNJMAAAAJ&hl=en" target="_blank" rel="noopener" title="Google Scholar"><img src="icons/google-scholar.svg" alt="Google Scholar"></a>
-          <a href="https://github.com/mondalanindya" target="_blank" rel="noopener" title="GitHub"><img src="icons/github-mark.svg" alt="GitHub"></a>
-          <a href="https://www.linkedin.com/in/anindyamondal2001/" target="_blank" rel="noopener" title="LinkedIn"><img src="icons/linkedin.svg" alt="LinkedIn"></a>
-          <a href="https://www.webofscience.com/wos/author/record/ACH-7007-2022" target="_blank" rel="noopener" title="Web of Science"><img src="icons/clarivate.svg" alt="Web of Science"></a>
-          <a href="https://youtube.com/@anindyamondal?si=HQNKilH--rPsiC6X" target="_blank" rel="noopener" title="YouTube"><img src="icons/youtube.svg" alt="YouTube"></a>
-          <a href="assets/Anindya_CV.pdf" target="_blank" rel="noopener" title="CV (PDF)"><img src="icons/cv.svg" alt="CV"></a>
-        </div>
-      </div>
-    </section>
 
-    <section id="research-interests">
-      <h2>Research Interests</h2>
-      <p>My research lies at the intersection of computer vision and natural language processing, with a focus on:</p>
-      <ul>
-        <li><strong>Vision-Language Models:</strong> Multi-modal representation learning for robust scene understanding</li>
-        <li><strong>Generative AI:</strong> Text-to-image synthesis with precise instance control and counting</li>
-        <li><strong>Action Recognition:</strong> Actor-agnostic video understanding using multi-modal queries</li>
-        <li><strong>Object Counting:</strong> Multi-label counting with semantic-geometric priors for real-world applications</li>
-      </ul>
-    </section>
-
-    <section id="publications">
-      <h2>Publications</h2>
-      <div class="publication-list">
-        <div class="publication-item first-author">
-          <img src="images/pipeline.png" alt="CountLoop thumbnail" loading="lazy">
-          <div class="publication-content">
-            <h3>CountLoop: Iterative Agent Guided High Instance Image Generation</h3>
-            <p class="authors"><span class="author-me">Anindya Mondal</span>, Ayan Banerjee, Sauradip Nag, Josep Llàdos, Xiatian Zhu, Anjan Dutta</p>
-            <span class="venue-badge preprint">Under Review</span>
-            <div class="links">
-              <a href="https://arxiv.org/pdf/2508.16644" target="_blank">PDF</a>
-              <a href="https://openresearch.surrey.ac.uk/esploro/outputs/991071129002346" target="_blank">Surrey</a>
-              <a href="https://mondalanindya.github.io/CountLoop/" target="_blank">Project Page</a>
+    <!-- ===== MAIN CONTENT ===== -->
+    <div id="layout-content">
+      <main id="content">
+        <section id="home">
+          <h1>Anindya Mondal</h1>
+          <div class="bio-header">
+            <img src="images/qeqe.jpg" alt="Anindya Mondal" loading="lazy">
+            <div class="bio-text">
+              <p class="subtitle">PhD Student in Computer Vision and AI</p>
+              <p class="affiliation">
+                <a href="https://www.surrey.ac.uk/centre-vision-speech-signal-processing" target="_blank">Surrey Institute for People-Centred AI (CVSSP)</a>,
+                University of Surrey, UK
+              </p>
+              <p>
+                I am a final-year PhD student advised by
+                <a href="https://sites.google.com/site/2adutta/" target="_blank">Dr. Anjan Dutta</a>,
+                <a href="https://surrey-uplab.github.io/" target="_blank">Dr. Xiatian Zhu</a>, and
+                <a href="https://www.surrey.ac.uk/people/joaquin-m-prada" target="_blank">Dr. Joaquin M. Prada</a>.
+                My research focuses on vision-language representation learning with applications in
+                action recognition, object counting, and text-to-image synthesis. I aim to develop
+                practical algorithms that enable robust scene understanding and generation in
+                real-world settings by effectively integrating multi-modal signals.
+              </p>
+              <p class="email"><strong>Email:</strong> a.mondal [at] surrey.ac.uk</p>
             </div>
           </div>
-        </div>
 
-        <div class="publication-item first-author">
-          <img src="images/omni.png" alt="OmniCount thumbnail" loading="lazy">
-          <div class="publication-content">
-            <h3>OmniCount: Multi-label Object Counting with Semantic-Geometric Priors</h3>
-            <p class="authors"><span class="author-me">Anindya Mondal</span>, Sauradip Nag, Xiatian Zhu, Anjan Dutta</p>
-            <span class="venue-badge conference">AAAI 2025</span>
-            <div class="links">
-              <a href="https://ojs.aaai.org/index.php/AAAI/article/view/34151" target="_blank">DOI</a>
-              <a href="https://mondalanindya.github.io/OmniCount/" target="_blank">Project Page</a>
+          <h2>Research Interests</h2>
+          <ul class="interests-list">
+            <li><strong>Vision-Language Models:</strong> Multi-modal representation learning for robust scene understanding</li>
+            <li><strong>Generative AI:</strong> Text-to-image synthesis with precise instance control and counting</li>
+            <li><strong>Action Recognition:</strong> Actor-agnostic video understanding using multi-modal queries</li>
+            <li><strong>Object Counting:</strong> Multi-label counting with semantic-geometric priors for real-world applications</li>
+          </ul>
+        </section>
+
+        <section id="publications">
+          <h2>Publications</h2>
+
+          <div class="pub-item first-author">
+            <img src="images/pipeline.png" alt="CountLoop" loading="lazy">
+            <div class="pub-details">
+              <h3>CountLoop: Iterative Agent Guided High Instance Image Generation</h3>
+              <p class="authors"><span class="author-me">Anindya Mondal</span>, Ayan Banerjee, Sauradip Nag, Josep Llados, Xiatian Zhu, Anjan Dutta</p>
+              <span class="venue-badge preprint">Under Review</span>
+              <div class="pub-links">
+                <a href="https://arxiv.org/pdf/2508.16644" target="_blank">[PDF]</a>
+                <a href="https://openresearch.surrey.ac.uk/esploro/outputs/991071129002346" target="_blank">[Surrey]</a>
+                <a href="https://mondalanindya.github.io/CountLoop/" target="_blank">[Project]</a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="publication-item first-author">
-          <img src="images/iccvwpipeline.jpg" alt="Actor-agnostic Action Recognition thumbnail" loading="lazy">
-          <div class="publication-content">
-            <h3>Actor-agnostic Multi-label Action Recognition with Multi-modal Query</h3>
-            <p class="authors"><span class="author-me">Anindya Mondal</span>, Sauradip Nag, Joaquin M. Prada, Xiatian Zhu, Anjan Dutta</p>
-            <span class="venue-badge conference">ICCVW 2023</span>
-            <div class="links">
-              <a href="https://doi.org/10.1109/ICCVW60793.2023.00086" target="_blank">DOI</a>
-              <a href="https://github.com/mondalanindya/MSQNet" target="_blank">Code</a>
+          <div class="pub-item first-author">
+            <img src="images/omni.png" alt="OmniCount" loading="lazy">
+            <div class="pub-details">
+              <h3>OmniCount: Multi-label Object Counting with Semantic-Geometric Priors</h3>
+              <p class="authors"><span class="author-me">Anindya Mondal</span>, Sauradip Nag, Xiatian Zhu, Anjan Dutta</p>
+              <span class="venue-badge conference">AAAI 2025</span>
+              <div class="pub-links">
+                <a href="https://ojs.aaai.org/index.php/AAAI/article/view/34151" target="_blank">[DOI]</a>
+                <a href="https://mondalanindya.github.io/OmniCount/" target="_blank">[Project]</a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="publication-item first-author">
-          <img src="images/timegnn.png" alt="Time-varying Signals Recovery thumbnail" loading="lazy">
-          <div class="publication-content">
-            <h3>Time-varying Signals Recovery via Graph Neural Networks</h3>
-            <p class="authors">JAC Correa, JH Giraldo, <span class="author-me">Anindya Mondal et al.</span></p>
-            <span class="venue-badge conference">ICASSP 2023</span>
-            <div class="links">
-              <a href="assets/pubs/icassp23.pdf" target="_blank">PDF</a>
-              <a href="https://doi.org/10.1109/ICASSP49357.2023.10096168" target="_blank">DOI</a>
+          <div class="pub-item first-author">
+            <img src="images/iccvwpipeline.jpg" alt="MSQNet" loading="lazy">
+            <div class="pub-details">
+              <h3>Actor-agnostic Multi-label Action Recognition with Multi-modal Query</h3>
+              <p class="authors"><span class="author-me">Anindya Mondal</span>, Sauradip Nag, Joaquin M. Prada, Xiatian Zhu, Anjan Dutta</p>
+              <span class="venue-badge conference">ICCVW 2023</span>
+              <div class="pub-links">
+                <a href="https://doi.org/10.1109/ICCVW60793.2023.00086" target="_blank">[DOI]</a>
+                <a href="https://github.com/mondalanindya/MSQNet" target="_blank">[Code]</a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="publication-item first-author">
-          <img src="images/euusipco.png" alt="Recovery of Missing Sensor Data thumbnail" loading="lazy">
-          <div class="publication-content">
-            <h3>Recovery of Missing Sensor Data by Reconstructing Time-varying Graph Signals</h3>
-            <p class="authors"><span class="author-me">Anindya Mondal</span> et al.</p>
-            <span class="venue-badge conference">EUSIPCO 2022</span>
-            <div class="links">
-              <a href="assets/pubs/eusipco22.pdf" target="_blank">PDF</a>
-              <a href="https://doi.org/10.23919/EUSIPCO55093.2022.9909940" target="_blank">DOI</a>
-              <a href="https://github.com/mondalanindya/EUSIPCO_22_Sobolev" target="_blank">Code</a>
+          <div class="pub-item">
+            <img src="images/timegnn.png" alt="Time-varying GNN" loading="lazy">
+            <div class="pub-details">
+              <h3>Time-varying Signals Recovery via Graph Neural Networks</h3>
+              <p class="authors">JAC Correa, JH Giraldo, <span class="author-me">Anindya Mondal</span> et al.</p>
+              <span class="venue-badge conference">ICASSP 2023</span>
+              <div class="pub-links">
+                <a href="assets/pubs/icassp23.pdf" target="_blank">[PDF]</a>
+                <a href="https://doi.org/10.1109/ICASSP49357.2023.10096168" target="_blank">[DOI]</a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="publication-item first-author">
-          <img src="images/iccvw21.png" alt="Moving Object Detection thumbnail" loading="lazy">
-          <div class="publication-content">
-            <h3>Moving Object Detection for Event-based Vision using Graph Spectral Clustering</h3>
-            <p class="authors"><span class="author-me">Anindya Mondal</span>, R. Shashant et al.</p>
-            <span class="venue-badge conference">ICCVW 2021</span>
-            <div class="links">
-              <a href="assets/pubs/iccvw21.pdf" target="_blank">PDF</a>
-              <a href="https://doi.org/10.1109/ICCVW54120.2021.00103" target="_blank">DOI</a>
-              <a href="https://github.com/mondalanindya/ICCVW2021_GSCEventMOD" target="_blank">Code</a>
+          <div class="pub-item first-author">
+            <img src="images/euusipco.png" alt="EUSIPCO 2022" loading="lazy">
+            <div class="pub-details">
+              <h3>Recovery of Missing Sensor Data by Reconstructing Time-varying Graph Signals</h3>
+              <p class="authors"><span class="author-me">Anindya Mondal</span> et al.</p>
+              <span class="venue-badge conference">EUSIPCO 2022</span>
+              <div class="pub-links">
+                <a href="assets/pubs/eusipco22.pdf" target="_blank">[PDF]</a>
+                <a href="https://doi.org/10.23919/EUSIPCO55093.2022.9909940" target="_blank">[DOI]</a>
+                <a href="https://github.com/mondalanindya/EUSIPCO_22_Sobolev" target="_blank">[Code]</a>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="news">
-      <h2>News</h2>
-      <ul>
-        <li><strong>Jan 2025:</strong> Paper on multi-label object counting accepted at AAAI 2025! 🎉</li>
-        <li><strong>Dec 2024:</strong> Awarded AAAI 2025 Conference Travel Grant (worth $1200)</li>
-        <li><strong>Oct 2023:</strong> Presented our work on actor-agnostic action recognition at ICCV Workshop 2023 in Paris</li>
-        <li><strong>Sep 2022:</strong> Started PhD at University of Surrey with full studentship funding</li>
-      </ul>
-    </section>
+          <div class="pub-item first-author">
+            <img src="images/iccvw21.png" alt="ICCVW 2021" loading="lazy">
+            <div class="pub-details">
+              <h3>Moving Object Detection for Event-based Vision using Graph Spectral Clustering</h3>
+              <p class="authors"><span class="author-me">Anindya Mondal</span>, R. Shashant et al.</p>
+              <span class="venue-badge conference">ICCVW 2021</span>
+              <div class="pub-links">
+                <a href="assets/pubs/iccvw21.pdf" target="_blank">[PDF]</a>
+                <a href="https://doi.org/10.1109/ICCVW54120.2021.00103" target="_blank">[DOI]</a>
+                <a href="https://github.com/mondalanindya/ICCVW2021_GSCEventMOD" target="_blank">[Code]</a>
+              </div>
+            </div>
+          </div>
+        </section>
 
-    <section id="education">
-      <h2>Education</h2>
-      <ul>
-        <li><strong>PhD in Computer Vision and AI</strong> (2022 – Present)<br>
-        University of Surrey, UK<br>
-        <em>Surrey Institute for People-Centred AI (CVSSP)</em><br>
-        Advisors: <a href="https://anjandutta.github.io/" target="_blank">Dr. Anjan Dutta</a>, <a href="https://surrey-uplab.github.io/" target="_blank">Dr. Xiatian Zhu</a>, and Dr. Joaquin M. Prada</li>
-      </ul>
-    </section>
+        <section id="news">
+          <h2>News</h2>
+          <table class="news-table">
+            <tr><td class="news-date">Jan 2025</td><td class="news-text">Paper on multi-label object counting accepted at <strong>AAAI 2025</strong>!</td></tr>
+            <tr><td class="news-date">Dec 2024</td><td class="news-text">Awarded AAAI 2025 Conference Travel Grant (worth $1200)</td></tr>
+            <tr><td class="news-date">Oct 2023</td><td class="news-text">Presented work on actor-agnostic action recognition at <strong>ICCV Workshop 2023</strong> in Paris</td></tr>
+            <tr><td class="news-date">Sep 2022</td><td class="news-text">Started PhD at University of Surrey with full studentship funding</td></tr>
+          </table>
+        </section>
 
-    <section id="awards">
-      <h2>Awards & Recognition</h2>
-      <ul>
-        <li><strong>AAAI 2025 Conference Travel Grant</strong> (worth $1200), Philadelphia, USA</li>
-        <li><strong>ICCV 2023 Conference Grant</strong>, Paris, France</li>
-        <li><strong>University of Surrey Postgraduate Studentship</strong> (2022 – 2025), Full PhD funding</li>
-        <li><strong>Uplink Research Internship Award</strong>, ACM SIGKDD India Chapter</li>
-      </ul>
-    </section>
+        <section id="education">
+          <h2>Education</h2>
+          <ul class="info-list">
+            <li>
+              <span class="item-title">PhD in Computer Vision and AI</span> (2022 &ndash; Present)<br>
+              University of Surrey, UK<br>
+              <span class="item-meta">Surrey Institute for People-Centred AI (CVSSP)</span><br>
+              <span class="item-meta">Advisors:
+                <a href="https://anjandutta.github.io/" target="_blank">Dr. Anjan Dutta</a>,
+                <a href="https://surrey-uplab.github.io/" target="_blank">Dr. Xiatian Zhu</a>, and
+                Dr. Joaquin M. Prada
+              </span>
+            </li>
+          </ul>
+        </section>
 
-    <section id="teaching">
-      <h2>Teaching</h2>
-      <ul>
-        <li><strong>2023 – 2025:</strong> Teaching Assistant for Applied Machine Learning (EEEM068), Advanced Topics in Computer Vision and Deep Learning (EEEM071), and <a href="https://www.surrey.ac.uk/artificial-intelligence/cdt" target="_blank">UKRI Centre for Doctoral Training (CDT)</a> at the University of Surrey</li>
-      </ul>
-    </section>
+        <section id="awards">
+          <h2>Awards &amp; Recognition</h2>
+          <ul class="info-list">
+            <li><span class="item-title">AAAI 2025 Conference Travel Grant</span> (worth $1200), Philadelphia, USA</li>
+            <li><span class="item-title">ICCV 2023 Conference Grant</span>, Paris, France</li>
+            <li><span class="item-title">University of Surrey Postgraduate Studentship</span> (2022 &ndash; 2025), Full PhD funding</li>
+            <li><span class="item-title">Uplink Research Internship Award</span>, ACM SIGKDD India Chapter</li>
+          </ul>
+        </section>
 
-    <section id="service">
-      <h2>Academic Service</h2>
-      <ul>
-        <li><strong>Peer Reviewer:</strong> ICASSP, ICCV, CVPR, ECCV, NeurIPS, ICPR, IEEE Transactions on Signal Processing (TSP), IEEE Transactions on Signal and Information Processing over Networks (TSIPN)</li>
-      </ul>
-    </section>
-  </main>
-  <footer>
-    <p>Last updated: February 2025</p>
-  </footer>
+        <section id="teaching">
+          <h2>Teaching</h2>
+          <ul class="info-list">
+            <li>
+              <span class="item-title">Teaching Assistant</span> (2023 &ndash; 2025), University of Surrey<br>
+              <span class="item-meta">Applied Machine Learning (EEEM068), Advanced Topics in Computer Vision and Deep Learning (EEEM071), and
+              <a href="https://www.surrey.ac.uk/artificial-intelligence/cdt" target="_blank">UKRI Centre for Doctoral Training (CDT)</a></span>
+            </li>
+          </ul>
+        </section>
+
+        <section id="service">
+          <h2>Academic Service</h2>
+          <ul class="service-list">
+            <li><strong>Peer Reviewer:</strong> ICASSP, ICCV, CVPR, ECCV, NeurIPS, ICPR, IEEE Transactions on Signal Processing (TSP), IEEE Transactions on Signal and Information Processing over Networks (TSIPN)</li>
+          </ul>
+        </section>
+
+        <footer>
+          Last updated: March 2026 &middot; Powered by jemdoc-inspired styling
+        </footer>
+      </main>
+    </div>
+  </div>
+
   <script>
-    // Theme toggle functionality
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
     const body = document.body;
-
-    // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       body.classList.add('dark-mode');
-      themeIcon.textContent = '🌙';
-    } else {
-      body.classList.remove('dark-mode');
-      themeIcon.textContent = '☀️';
+      icon.innerHTML = '&#9790;';
     }
-
-    // Toggle theme on button click
-    themeToggle.addEventListener('click', () => {
+    toggle.addEventListener('click', () => {
       body.classList.toggle('dark-mode');
       const isDark = body.classList.contains('dark-mode');
-      themeIcon.textContent = isDark ? '🌙' : '☀️';
+      icon.innerHTML = isDark ? '&#9790;' : '&#9788;';
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
+
+    // Highlight current menu item on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const menuItems = document.querySelectorAll('.menu-item a[href^="#"]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          menuItems.forEach(item => item.parentElement.classList.remove('current'));
+          const active = document.querySelector(`.menu-item a[href="#${entry.target.id}"]`);
+          if (active) active.parentElement.classList.add('current');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => observer.observe(s));
   </script>
-<a href="https://clustrmaps.com/site/1bt1g" title="Visit tracker" style="display:inline-block;width:1px;height:1px;overflow:hidden;line-height:0;">
+  <a href="https://clustrmaps.com/site/1bt1g" title="Visit tracker" style="display:inline-block;width:1px;height:1px;overflow:hidden;line-height:0;">
     <img src="//clustrmaps.com/map_v2.png?cl=080808&w=1&t=tt&d=VUWsmjs9vT_QHmhAr6OuY_eMPD1CJyQ5FGORa626Ips&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=000000" width="1" height="1" alt="" aria-hidden="true" style="border:0;width:1px;height:1px;" />
-  </a></body>
+  </a>
+</body>
 </html>
