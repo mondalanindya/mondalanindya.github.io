@@ -96,9 +96,11 @@
     }
     .menu-profile img {
       width: 120px;
-      height: 120px;
+      height: auto;
+      aspect-ratio: 1;
       border-radius: 50%;
       object-fit: cover;
+      object-position: top center;
       border: 3px solid var(--profile-border);
       margin-bottom: 0.5rem;
     }
@@ -230,9 +232,11 @@
     }
     .bio-header img {
       width: 160px;
-      height: 160px;
+      height: auto;
+      aspect-ratio: 1;
       border-radius: 6px;
       object-fit: cover;
+      object-position: top center;
       border: 2px solid var(--profile-border);
       flex-shrink: 0;
     }
@@ -450,7 +454,7 @@
       }
       .menu-profile img {
         width: 60px;
-        height: 60px;
+        height: auto;
       }
       .menu-category {
         display: none;
@@ -471,7 +475,7 @@
       }
       .bio-header img {
         width: 120px;
-        height: 120px;
+        height: auto;
       }
       .pub-item {
         flex-direction: column;
