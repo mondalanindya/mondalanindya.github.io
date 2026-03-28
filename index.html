@@ -224,24 +224,8 @@
     a:hover { border-bottom: 1px dotted var(--muted); }
 
     /* ===== Profile / Bio ===== */
-    .bio-header {
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
+    .bio-text {
       margin-bottom: 1.2rem;
-    }
-    .bio-header img {
-      width: 160px;
-      height: auto;
-      aspect-ratio: 1;
-      border-radius: 6px;
-      object-fit: cover;
-      object-position: top center;
-      border: 2px solid var(--profile-border);
-      flex-shrink: 0;
-    }
-    .bio-header .bio-text {
-      flex: 1;
     }
     .bio-text .subtitle {
       color: var(--muted);
@@ -470,13 +454,6 @@
       #layout-content {
         padding: 1rem;
       }
-      .bio-header {
-        flex-direction: column;
-      }
-      .bio-header img {
-        width: 120px;
-        height: auto;
-      }
       .pub-item {
         flex-direction: column;
       }
@@ -536,9 +513,7 @@
       <main id="content">
         <section id="home">
           <h1>Anindya Mondal</h1>
-          <div class="bio-header">
-            <img src="images/qeqe.jpg" alt="Anindya Mondal" loading="lazy">
-            <div class="bio-text">
+          <div class="bio-text">
               <p class="subtitle">PhD Student in Computer Vision and AI</p>
               <p class="affiliation">
                 <a href="https://www.surrey.ac.uk/centre-vision-speech-signal-processing" target="_blank">Surrey Institute for People-Centred AI (CVSSP)</a>,
@@ -555,7 +530,6 @@
                 real-world settings by effectively integrating multi-modal signals.
               </p>
               <p class="email"><strong>Email:</strong> a.mondal [at] surrey.ac.uk</p>
-            </div>
           </div>
 
           <h2>Research Interests</h2>
