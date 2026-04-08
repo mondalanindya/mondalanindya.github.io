@@ -4,14 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Anindya Mondal - PhD Student in Computer Vision and AI</title>
+  <link rel="canonical" href="https://mondalanindya.github.io/">
   <link rel="icon" type="image/png" href="images/qeqe.jpg">
-  <meta name="description" content="Anindya Mondal - PhD student at University of Surrey researching vision-language representation learning, multi-modal action recognition, object counting, and text-to-image synthesis.">
-  <meta name="keywords" content="Computer Vision, AI, Machine Learning, Vision-Language Models, Action Recognition, Object Counting, Generative AI, Deep Learning, PhD Student">
+
+  <!-- SEO -->
+  <meta name="description" content="Anindya Mondal - final-year PhD student at University of Surrey researching vision-language representation learning, multi-modal action recognition, object counting, and text-to-image synthesis.">
+  <meta name="keywords" content="Anindya Mondal, Computer Vision, AI, Machine Learning, Vision-Language Models, Action Recognition, Object Counting, Generative AI, Deep Learning, PhD Student, University of Surrey, CVSSP">
   <meta name="author" content="Anindya Mondal">
-  <!-- Font stack: Lora (elegant serif headings) + Source Sans 3 (clean readable body) -->
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#5a85b5">
+
+  <!-- Open Graph (Facebook, LinkedIn) -->
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://mondalanindya.github.io/">
+  <meta property="og:title" content="Anindya Mondal - PhD Student in Computer Vision and AI">
+  <meta property="og:description" content="Final-year PhD student at University of Surrey (CVSSP) researching vision-language models, action recognition, object counting, and generative AI.">
+  <meta property="og:image" content="https://mondalanindya.github.io/images/qeqe.jpg">
+  <meta property="og:image:alt" content="Anindya Mondal">
+  <meta property="og:site_name" content="Anindya Mondal">
+  <meta property="profile:first_name" content="Anindya">
+  <meta property="profile:last_name" content="Mondal">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Anindya Mondal - PhD Student in Computer Vision and AI">
+  <meta name="twitter:description" content="Final-year PhD student at University of Surrey (CVSSP) researching vision-language models, action recognition, object counting, and generative AI.">
+  <meta name="twitter:image" content="https://mondalanindya.github.io/images/qeqe.jpg">
+
+  <!-- JSON-LD structured data for academic identity -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Anindya Mondal",
+    "url": "https://mondalanindya.github.io/",
+    "image": "https://mondalanindya.github.io/images/qeqe.jpg",
+    "jobTitle": "PhD Student in Computer Vision and AI",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Surrey",
+      "department": "Surrey Institute for People-Centred AI (CVSSP)",
+      "url": "https://www.surrey.ac.uk/centre-vision-speech-signal-processing"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Surrey"
+    },
+    "knowsAbout": [
+      "Computer Vision",
+      "Vision-Language Models",
+      "Generative AI",
+      "Action Recognition",
+      "Object Counting",
+      "Deep Learning"
+    ],
+    "sameAs": [
+      "https://scholar.google.com/citations?user=qjQmNJMAAAAJ&hl=en",
+      "https://github.com/mondalanindya",
+      "https://www.linkedin.com/in/anindyamondal2001/",
+      "https://www.webofscience.com/wos/author/record/ACH-7007-2022"
+    ]
+  }
+  </script>
+
+  <!-- Font loading: preconnect + lean weight subset + display=swap for fast FCP -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
   <style>
     /* ===== jemdoc-inspired academic theme ===== */
     :root {
@@ -473,7 +533,7 @@
     <!-- ===== SIDEBAR ===== -->
     <nav id="layout-menu" aria-label="Main navigation">
       <div class="menu-profile">
-        <img src="images/qeqe.jpg" alt="Anindya Mondal" loading="lazy">
+        <img src="images/qeqe.jpg" alt="Anindya Mondal" width="120" height="120" fetchpriority="high" decoding="async">
         <div>
           <div class="name">Anindya Mondal</div>
           <div class="title">PhD Student<br>University of Surrey</div>
@@ -545,7 +605,7 @@
           <h2>Publications</h2>
 
           <div class="pub-item first-author">
-            <img src="images/pipeline.png" alt="CountLoop" loading="lazy">
+            <img src="images/pipeline.png" alt="CountLoop" width="220" height="140" loading="lazy" decoding="async">
             <div class="pub-details">
               <h3>CountLoop: Iterative Agent Guided High Instance Image Generation</h3>
               <p class="authors"><span class="author-me">Anindya Mondal</span>, Ayan Banerjee, Sauradip Nag, Josep Llados, Xiatian Zhu, Anjan Dutta</p>
@@ -559,7 +619,7 @@
           </div>
 
           <div class="pub-item first-author">
-            <img src="images/omni.png" alt="OmniCount" loading="lazy">
+            <img src="images/omni.png" alt="OmniCount" width="220" height="140" loading="lazy" decoding="async">
             <div class="pub-details">
               <h3>OmniCount: Multi-label Object Counting with Semantic-Geometric Priors</h3>
               <p class="authors"><span class="author-me">Anindya Mondal</span>, Sauradip Nag, Xiatian Zhu, Anjan Dutta</p>
@@ -572,7 +632,7 @@
           </div>
 
           <div class="pub-item first-author">
-            <img src="images/iccvwpipeline.jpg" alt="MSQNet" loading="lazy">
+            <img src="images/iccvwpipeline.jpg" alt="MSQNet" width="220" height="140" loading="lazy" decoding="async">
             <div class="pub-details">
               <h3>Actor-agnostic Multi-label Action Recognition with Multi-modal Query</h3>
               <p class="authors"><span class="author-me">Anindya Mondal</span>, Sauradip Nag, Joaquin M. Prada, Xiatian Zhu, Anjan Dutta</p>
@@ -585,7 +645,7 @@
           </div>
 
           <div class="pub-item">
-            <img src="images/timegnn.png" alt="Time-varying GNN" loading="lazy">
+            <img src="images/timegnn.png" alt="Time-varying GNN" width="220" height="140" loading="lazy" decoding="async">
             <div class="pub-details">
               <h3>Time-varying Signals Recovery via Graph Neural Networks</h3>
               <p class="authors">JAC Correa, JH Giraldo, <span class="author-me">Anindya Mondal</span> et al.</p>
@@ -598,7 +658,7 @@
           </div>
 
           <div class="pub-item first-author">
-            <img src="images/euusipco.png" alt="EUSIPCO 2022" loading="lazy">
+            <img src="images/euusipco.png" alt="EUSIPCO 2022" width="220" height="140" loading="lazy" decoding="async">
             <div class="pub-details">
               <h3>Recovery of Missing Sensor Data by Reconstructing Time-varying Graph Signals</h3>
               <p class="authors"><span class="author-me">Anindya Mondal</span> et al.</p>
@@ -612,7 +672,7 @@
           </div>
 
           <div class="pub-item first-author">
-            <img src="images/iccvw21.png" alt="ICCVW 2021" loading="lazy">
+            <img src="images/iccvw21.png" alt="ICCVW 2021" width="220" height="140" loading="lazy" decoding="async">
             <div class="pub-details">
               <h3>Moving Object Detection for Event-based Vision using Graph Spectral Clustering</h3>
               <p class="authors"><span class="author-me">Anindya Mondal</span>, R. Shashant et al.</p>
