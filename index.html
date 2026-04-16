@@ -67,11 +67,11 @@
   }
   </script>
 
-  <!-- Font loading: preconnect + lean weight subset + display=swap for fast FCP -->
+  <!-- Font loading: Source Sans 3 (closest free equivalent to Adobe Clean) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap">
   <style>
     /* ===== jemdoc-inspired academic theme ===== */
     :root {
@@ -167,7 +167,7 @@
       margin-bottom: 0.5rem;
     }
     .menu-profile .name {
-      font-family: 'Lora', Georgia, serif;
+      font-family: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
       font-size: 1rem;
       font-weight: 600;
       color: var(--heading);
@@ -251,11 +251,11 @@
 
     /* ===== Typography ===== */
     h1, h2, h3 {
-      font-family: 'Lora', Georgia, 'Times New Roman', serif;
+      font-family: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
     }
     h1 {
       font-size: 1.7em;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--heading);
       border-bottom: 1px solid var(--border);
       padding-bottom: 0.3rem;
@@ -265,7 +265,7 @@
     }
     h2 {
       font-size: 1.25em;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--heading);
       border-bottom: 1px solid var(--border);
       padding-bottom: 0.2rem;
@@ -274,7 +274,7 @@
     }
     h3 {
       font-size: 1.05em;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--heading);
       margin: 0 0 0.3rem;
     }
@@ -291,7 +291,8 @@
     }
     .bio-text .subtitle {
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 1.1rem;
+      font-weight: 300;
       margin-bottom: 0.5rem;
     }
     .bio-text .affiliation {
