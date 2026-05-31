@@ -93,9 +93,8 @@
 
     body {
       font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      /* Scales from 13px at 320px viewport → 16px at 880px, capped both ends */
-      font-size: clamp(13px, 0.6875rem + 0.625vw, 16px);
-      line-height: 1.65;
+      font-size: clamp(13px, 0.6875rem + 0.625vw, 15px);
+      line-height: 1.55;
       color: var(--text);
       background: var(--bg);
       -webkit-font-smoothing: antialiased;
@@ -105,31 +104,66 @@
     .page {
       max-width: 880px;
       margin: 0 auto;
-      padding: clamp(24px, 5vw, 48px) clamp(16px, 3vw, 24px) 32px;
+      padding: clamp(20px, 3.5vw, 36px) clamp(14px, 3vw, 22px) 24px;
     }
+
+    /* ── Tagline ── */
+    .tagline {
+      margin: 5px 0 10px;
+    }
+    .tagline p {
+      font-size: 0.97em;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .tagline .tagline-attr {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.8em;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    /* ── News [New] badge ── */
+    .news-new {
+      display: inline-block;
+      font-size: 0.75em;
+      font-weight: 700;
+      color: #2d8a2d;
+      letter-spacing: 0.03em;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+    body.dark-mode .news-new { color: #5cb85c; }
 
     /* ── Bio / header ── */
     header {
       display: flex;
       gap: 0;
       align-items: flex-start;
-      margin-bottom: 36px;
+      margin-bottom: 14px;
     }
     .bio-col {
       flex: 1;
-      padding: 2.5%;
+      padding: 0.5%;
     }
     .photo-col {
-      width: 37%;
-      padding: 2.5%;
+      width: 26%;
+      padding: 0 0 0 2%;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
     }
     .photo {
       width: 100%;
-      max-width: clamp(150px, 22vw, 220px);
-      border-radius: 8px;
+      max-width: clamp(120px, 16vw, 175px);
+      border-radius: 50%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: center top;
       border: 1px solid var(--border);
       display: block;
     }
@@ -143,32 +177,48 @@
     .affil {
       color: var(--muted);
       font-size: 0.95em;
-      margin-bottom: 14px;
+      margin-bottom: 8px;
     }
     .bio-para {
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
-    .links {
-      margin-top: 14px;
-      font-size: 0.95em;
+    .photo-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+      max-width: clamp(120px, 16vw, 175px);
     }
-    .links a {
-      color: var(--link);
+    .photo-links a {
+      text-decoration: none;
+      opacity: 0.55;
+      transition: opacity 0.15s, transform 0.15s;
+      display: flex;
+      align-items: center;
+    }
+    .photo-links a:hover {
+      opacity: 1;
+      transform: scale(1.18);
       text-decoration: none;
     }
-    .links a:hover {
-      color: var(--link-hover);
-      text-decoration: underline;
+    .photo-links img {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+    body.dark-mode .photo-links img {
+      filter: invert(1) brightness(1.1);
     }
 
     /* ── Section headings ── */
     h2 {
-      font-size: 1.12em;
+      font-size: 1.08em;
       font-weight: 700;
       color: var(--heading);
       border-bottom: 1px solid var(--border);
-      padding-bottom: 5px;
-      margin: 36px 0 16px;
+      padding-bottom: 4px;
+      margin: 18px 0 10px;
       clear: both;
     }
 
@@ -186,8 +236,8 @@
       display: flex;
       gap: 0;
       align-items: center;
-      padding: 20px 14px;
-      margin: 0 -14px;
+      padding: 12px 12px;
+      margin: 0 -12px;
       border-radius: 6px;
       transition: background 0.2s ease;
     }
@@ -195,8 +245,8 @@
       background: var(--highlight);
     }
     .paper-img-col {
-      width: 28%;
-      padding: 0 20px 0 0;
+      width: 26%;
+      padding: 0 14px 0 0;
       flex-shrink: 0;
       display: flex;
       align-items: center;
@@ -214,13 +264,13 @@
     }
     .paper-title {
       font-weight: 600;
-      font-size: 0.97em;
+      font-size: 0.95em;
       color: var(--heading);
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     .paper-tldr {
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .paper-tldr summary {
       list-style: none;
@@ -271,18 +321,18 @@
     }
     .paper-authors {
       color: var(--muted);
-      font-size: 0.92em;
+      font-size: 0.9em;
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     .paper-authors strong {
       color: var(--text);
       font-weight: 600;
     }
     .paper-venue {
-      font-size: 0.92em;
+      font-size: 0.9em;
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .paper-venue .conf {
       font-weight: 700;
@@ -308,11 +358,11 @@
     .news { display: flex; flex-direction: column; }
     .news-row {
       display: flex;
-      gap: 20px;
-      padding: 7px 0;
+      gap: 16px;
+      padding: 5px 0;
       border-bottom: 1px dotted var(--border);
-      font-size: 0.93em;
-      line-height: 1.55;
+      font-size: 0.91em;
+      line-height: 1.5;
     }
     .news-row:last-child { border-bottom: none; }
     .news-date {
@@ -329,10 +379,10 @@
       list-style: none;
     }
     .info-list li {
-      padding: 6px 0;
+      padding: 4px 0;
       border-bottom: 1px dotted var(--border);
-      font-size: 0.92em;
-      line-height: 1.55;
+      font-size: 0.9em;
+      line-height: 1.5;
     }
     .info-list li:last-child { border-bottom: none; }
     .info-title { font-weight: 600; color: var(--heading); }
@@ -348,7 +398,7 @@
 
     /* ── Footer ── */
     footer {
-      margin-top: 48px;
+      margin-top: 28px;
       padding-top: 14px;
       border-top: 1px solid var(--border);
       display: flex;
@@ -403,9 +453,11 @@
     <header>
       <div class="bio-col">
         <h1>Anindya Mondal</h1>
-        <p class="affil">
-          PhD Student &middot; <a href="https://www.surrey.ac.uk/centre-vision-speech-signal-processing" target="_blank">CVSSP</a>, University of Surrey, UK
-        </p>
+        <div class="tagline">
+          <p>We imagine what we understand.</p>
+          <p>We understand what we dare build.</p>
+          <span class="tagline-attr">— Anonymous</span>
+        </div>
         <p class="bio-para">
           I am a final-year PhD student at the
           <a href="https://www.surrey.ac.uk/centre-vision-speech-signal-processing" target="_blank">Surrey Institute for People-Centred AI (CVSSP)</a>,
@@ -420,17 +472,29 @@
           with the broader goal of building models that can precisely perceive and generate structured visual content
           from natural language without task-specific architectures or supervision.
         </p>
-        <p class="links">
-          <a href="mailto:a.mondal@surrey.ac.uk">Email</a> /
-          <a href="assets/Anindya_CV.pdf" target="_blank">CV</a> /
-          <a href="https://scholar.google.com/citations?user=qjQmNJMAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a> /
-          <a href="https://github.com/mondalanindya" target="_blank" rel="noopener">GitHub</a> /
-          <a href="https://www.linkedin.com/in/anindyamondal2001/" target="_blank" rel="noopener">LinkedIn</a> /
-          <a href="https://www.webofscience.com/wos/author/record/ACH-7007-2022" target="_blank" rel="noopener">Web of Science</a>
-        </p>
       </div>
       <div class="photo-col">
         <img class="photo" src="images/qeqe.jpg" alt="Anindya Mondal" width="220" fetchpriority="high" decoding="async">
+        <div class="photo-links">
+          <a href="mailto:a.mondal@surrey.ac.uk" title="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:var(--muted)"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+          <a href="assets/Anindya_CV.pdf" target="_blank" title="CV">
+            <img src="icons/cv.svg" alt="CV">
+          </a>
+          <a href="https://scholar.google.com/citations?user=qjQmNJMAAAAJ&hl=en" target="_blank" rel="noopener" title="Google Scholar">
+            <img src="icons/google-scholar.svg" alt="Google Scholar">
+          </a>
+          <a href="https://github.com/mondalanindya" target="_blank" rel="noopener" title="GitHub">
+            <img src="icons/github-mark.svg" alt="GitHub">
+          </a>
+          <a href="https://www.linkedin.com/in/anindyamondal2001/" target="_blank" rel="noopener" title="LinkedIn">
+            <img src="icons/linkedin.svg" alt="LinkedIn">
+          </a>
+          <a href="https://www.webofscience.com/wos/author/record/ACH-7007-2022" target="_blank" rel="noopener" title="Web of Science">
+            <img src="icons/clarivate.svg" alt="Web of Science">
+          </a>
+        </div>
       </div>
     </header>
 
@@ -439,11 +503,11 @@
     <div class="news">
       <div class="news-row">
         <span class="news-date">Jun 2026</span>
-        <span class="news-text">Starting as a Research Intern at <strong>Adobe</strong></span>
+        <span class="news-text"><span class="news-new">[New]</span> Starting as a Research Intern at <strong>Adobe</strong></span>
       </div>
       <div class="news-row">
         <span class="news-date">Jan 2025</span>
-        <span class="news-text">Paper on multi-label object counting accepted at <strong>AAAI 2025</strong>!</span>
+        <span class="news-text"><span class="news-new">[New]</span> Paper on multi-label object counting accepted at <strong>AAAI 2025</strong>!</span>
       </div>
       <div class="news-row">
         <span class="news-date">Dec 2024</span>
