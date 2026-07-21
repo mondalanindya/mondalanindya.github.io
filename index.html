@@ -269,6 +269,12 @@
       display: block;
       margin-bottom: 2px;
     }
+    .paper-oneliner {
+      display: block;
+      font-size: 0.9em;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
     .paper-tldr {
       margin-bottom: 4px;
     }
@@ -534,6 +540,7 @@
       <div class="paper-img-col"><img src="images/abacus.png" alt="ABACUS" loading="lazy" decoding="async"></div>
       <div class="paper-body">
         <span class="paper-title">ABACUS: Adapting Unified Foundation Model for Bridging Image Count Understanding and Generation</span>
+        <span class="paper-oneliner">One unified VLM that both counts objects and generates count-faithful images.</span>
         <details class="paper-tldr">
           <summary><span class="tldr-label">TL;DR</span><span class="tldr-arrow">▾</span></summary>
           <span class="tldr-body">Single unified 3B-parameter VLM that jointly solves object counting, crowd counting, referring-expression counting, and count-faithful image generation via density-aware adaptive zooming, MLLM attention-derived objectness maps, and a cycle-consistent GRPO strategy with nested local, boundary, and global rewards, achieving state-of-the-art across seven benchmarks without any benchmark-specific training.</span>
@@ -550,9 +557,30 @@
     </div>
 
     <div class="paper">
+      <div class="paper-img-col"><img src="images/omni.png" alt="OmniCount" loading="lazy" decoding="async"></div>
+      <div class="paper-body">
+        <span class="paper-title">OmniCount: Multi-label Object Counting with Semantic-Geometric Priors</span>
+        <span class="paper-oneliner">Training-free open-vocabulary multi-label counting; released the OmniCount-191 benchmark.</span>
+        <details class="paper-tldr">
+          <summary><span class="tldr-label">TL;DR</span><span class="tldr-arrow">▾</span></summary>
+          <span class="tldr-body">Training-free multi-label counter coupling CLIP semantic embeddings for open-vocabulary category grounding with SAM point-prompt geometric priors for precise instance segmentation; introduces OmniCount-191, the first benchmark with point, bounding-box, and VQA multi-label count annotations.</span>
+        </details>
+        <span class="paper-authors">
+          <strong>Anindya Mondal</strong>, Sauradip Nag, Xiatian Zhu, Anjan Dutta
+        </span>
+        <span class="paper-venue"><span class="conf">AAAI 2025</span></span>
+        <div class="paper-links">
+          <a href="https://ojs.aaai.org/index.php/AAAI/article/view/34151" target="_blank">DOI</a><span class="sep"> /</span>
+          <a href="https://mondalanindya.github.io/OmniCount/" target="_blank">Project</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper">
       <div class="paper-img-col"><img src="images/pipeline.png" alt="CountLoop" loading="lazy" decoding="async"></div>
       <div class="paper-body">
         <span class="paper-title">CountLoop: Iterative Agent Guided High Instance Image Generation</span>
+        <span class="paper-oneliner">Training-free planner-critic loop for accurate high-instance image generation.</span>
         <details class="paper-tldr">
           <summary><span class="tldr-label">TL;DR</span><span class="tldr-arrow">▾</span></summary>
           <span class="tldr-body">Training-free diffusion pipeline with a VLM planner–critic loop: the planner generates structured instance layouts via chain-of-thought reasoning; the critic provides count and spatial feedback; instance-driven cross-attention masking with cumulative attention composition prevents semantic leakage across high-density scenes, reducing counting error by up to 57%.</span>
@@ -570,28 +598,10 @@
     </div>
 
     <div class="paper">
-      <div class="paper-img-col"><img src="images/omni.png" alt="OmniCount" loading="lazy" decoding="async"></div>
-      <div class="paper-body">
-        <span class="paper-title">OmniCount: Multi-label Object Counting with Semantic-Geometric Priors</span>
-        <details class="paper-tldr">
-          <summary><span class="tldr-label">TL;DR</span><span class="tldr-arrow">▾</span></summary>
-          <span class="tldr-body">Training-free multi-label counter coupling CLIP semantic embeddings for open-vocabulary category grounding with SAM point-prompt geometric priors for precise instance segmentation; introduces OmniCount-191, the first benchmark with point, bounding-box, and VQA multi-label count annotations.</span>
-        </details>
-        <span class="paper-authors">
-          <strong>Anindya Mondal</strong>, Sauradip Nag, Xiatian Zhu, Anjan Dutta
-        </span>
-        <span class="paper-venue"><span class="conf">AAAI 2025</span></span>
-        <div class="paper-links">
-          <a href="https://ojs.aaai.org/index.php/AAAI/article/view/34151" target="_blank">DOI</a><span class="sep"> /</span>
-          <a href="https://mondalanindya.github.io/OmniCount/" target="_blank">Project</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper">
       <div class="paper-img-col"><img src="images/iccvwpipeline.jpg" alt="MSQNet" loading="lazy" decoding="async"></div>
       <div class="paper-body">
         <span class="paper-title">Actor-agnostic Multi-label Action Recognition with Multi-modal Query</span>
+        <span class="paper-oneliner">Actor-agnostic multi-label action recognition via multi-modal semantic queries.</span>
         <details class="paper-tldr">
           <summary><span class="tldr-label">TL;DR</span><span class="tldr-arrow">▾</span></summary>
           <span class="tldr-body">Transformer decoder treating each action class as a multi-modal semantic query (CLIP visual + text embeddings), decoupling action classification from actor-specific pose topology for actor-agnostic multi-label recognition; state-of-the-art across five benchmarks spanning human and animal actions.</span>
@@ -611,6 +621,7 @@
       <div class="paper-img-col"><img src="images/timegnn.png" alt="Time-varying GNN" loading="lazy" decoding="async"></div>
       <div class="paper-body">
         <span class="paper-title">Time-varying Signals Recovery via Graph Neural Networks</span>
+        <span class="paper-oneliner">Graph neural network for recovering missing time-varying sensor signals.</span>
         <details class="paper-tldr">
           <summary><span class="tldr-label">TL;DR</span><span class="tldr-arrow">▾</span></summary>
           <span class="tldr-body">Encoder-decoder GNN (TimeGNN) trained with a composite loss of MSE and a Sobolev graph smoothness operator, exploiting spatio-temporal correlations across graph topology for robust missing-entry recovery on real sensor and traffic datasets.</span>
@@ -630,6 +641,7 @@
       <div class="paper-img-col"><img src="images/euusipco.png" alt="EUSIPCO 2022" loading="lazy" decoding="async"></div>
       <div class="paper-body">
         <span class="paper-title">Recovery of Missing Sensor Data by Reconstructing Time-varying Graph Signals</span>
+        <span class="paper-oneliner">Recovers missing sensor data as smooth time-varying graph signals.</span>
         <details class="paper-tldr">
           <summary><span class="tldr-label">TL;DR</span><span class="tldr-arrow">▾</span></summary>
           <span class="tldr-body">Formulates missing wireless sensor data recovery as time-varying graph signal reconstruction minimising a Sobolev norm combining graph Laplacian smoothness across spatial and temporal dimensions, surpassing state-of-the-art by up to 54% at high missing-data rates.</span>
@@ -650,6 +662,7 @@
       <div class="paper-img-col"><img src="images/iccvw21.png" alt="ICCVW 2021" loading="lazy" decoding="async"></div>
       <div class="paper-body">
         <span class="paper-title">Moving Object Detection for Event-based Vision using Graph Spectral Clustering</span>
+        <span class="paper-oneliner">Unsupervised moving-object detection for event cameras via graph spectral clustering.</span>
         <details class="paper-tldr">
           <summary><span class="tldr-label">TL;DR</span><span class="tldr-arrow">▾</span></summary>
           <span class="tldr-body">Maps asynchronous event streams to a k-NN graph, applies graph Laplacian spectral decomposition for eigenvector-based clustering (GSCEventMOD), and determines the optimal cluster count via spectral gap analysis, enabling fully unsupervised moving object detection for event cameras.</span>
@@ -665,90 +678,6 @@
         </div>
       </div>
     </div>
-
-    <!-- ── Datasets & Open-Source ── -->
-    <h2>Datasets &amp; Open-Source</h2>
-    <ul class="info-list">
-      <li>
-        <span class="info-title">OmniCount-191</span> &middot; open multi-label object-counting benchmark<br>
-        <span class="info-meta">30,230 images &middot; 302,300 annotated instances &middot; 191 categories (counts, points, boxes) &middot;
-          <a href="https://github.com/mondalanindya/OmniCount" target="_blank">Code &amp; Data</a>
-        </span>
-      </li>
-      <li>
-        <span class="info-title">Open-Source Code</span><br>
-        <span class="info-meta">Reproducible implementations for
-          <a href="https://github.com/mondalanindya/OmniCount" target="_blank">OmniCount</a>,
-          <a href="https://github.com/mondalanindya/MSQNet" target="_blank">MSQNet</a>,
-          <a href="https://mondalanindya.github.io/CountLoop/" target="_blank">CountLoop</a>, and
-          <a href="https://github.com/mondalanindya/ICCVW2021_GSCEventMOD" target="_blank">GSCEventMOD</a> &middot;
-          <a href="https://github.com/mondalanindya" target="_blank">github.com/mondalanindya</a>
-        </span>
-      </li>
-    </ul>
-
-    <!-- ── Education ── -->
-    <h2>Education</h2>
-    <ul class="info-list">
-      <li>
-        <span class="info-title">PhD in Computer Vision and AI</span> (2022 &ndash; Present)<br>
-        University of Surrey, UK &middot;
-        <a href="https://www.surrey.ac.uk/centre-vision-speech-signal-processing" target="_blank">CVSSP</a><br>
-        <span class="info-meta">Advisors:
-          <a href="https://sites.google.com/site/2adutta/" target="_blank">Dr. Anjan Dutta</a>,
-          <a href="https://surrey-uplab.github.io/" target="_blank">Dr. Xiatian Zhu</a>,
-          Dr. Joaquin M. Prada
-        </span>
-      </li>
-    </ul>
-
-    <!-- ── Experience ── -->
-    <h2>Experience</h2>
-    <ul class="info-list">
-      <li>
-        <span class="info-title">Research Intern</span> (Jun 2026 &ndash; Present)<br>
-        Adobe Research, Bengaluru, India<br>
-        <span class="info-meta">Building rubric-aware VLM judges to evaluate generated visual content &mdash; prompt fidelity, edit correctness, layout preservation, and artifact severity.</span>
-      </li>
-      <li>
-        <span class="info-title">Research Intern</span> (May &ndash; Aug 2022)<br>
-        Indian Institute of Science (IISc), Bengaluru, India<br>
-        <span class="info-meta">Developed a source-free domain-adaptation framework for image classification under target-domain shift.</span>
-      </li>
-      <li>
-        <span class="info-title">Undergraduate Research Assistant</span> (Oct 2020 &ndash; May 2022)<br>
-        Jadavpur University, Kolkata, India<br>
-        <span class="info-meta">Graph learning and event-based vision for signal recovery, semi-supervised segmentation, and moving-object detection.</span>
-      </li>
-    </ul>
-
-    <!-- ── Awards ── -->
-    <h2>Awards &amp; Recognition</h2>
-    <ul class="info-list">
-      <li><span class="info-title">Awarded 10,000 hrs of GPU access</span> by UKRI (2&times;) &middot; London, UK</li>
-      <li><span class="info-title">AAAI 2025 Conference Travel Grant</span> ($1,200) &middot; Philadelphia, USA</li>
-      <li><span class="info-title">ICCV 2023 Conference Grant</span> &middot; Paris, France</li>
-      <li><span class="info-title">University of Surrey Postgraduate Studentship</span> (2022&ndash;2025) &middot; Full PhD funding</li>
-      <li><span class="info-title">Uplink Research Internship Award</span> &middot; ACM SIGKDD India Chapter</li>
-    </ul>
-
-    <!-- ── Teaching ── -->
-    <h2>Teaching</h2>
-    <ul class="info-list">
-      <li>
-        <span class="info-title">Teaching Assistant</span> (2023&ndash;2025) &middot; University of Surrey<br>
-        <span class="info-meta">
-          Applied Machine Learning (EEEM068), Advanced Topics in Computer Vision and Deep Learning (EEEM071),
-          <a href="https://www.surrey.ac.uk/artificial-intelligence/cdt" target="_blank">UKRI Centre for Doctoral Training (CDT)</a>
-        </span>
-      </li>
-    </ul>
-
-    <!-- ── Service ── -->
-    <h2>Academic Service</h2>
-    <ul class="service-list">
-      <li><strong>Peer Reviewer:</strong> CVPR, ICCV, ECCV, NeurIPS, ICASSP, ICPR, IEEE&nbsp;TSP, IEEE&nbsp;TSIPN</li>
-    </ul>
 
     <!-- ── Footer ── -->
     <footer>
