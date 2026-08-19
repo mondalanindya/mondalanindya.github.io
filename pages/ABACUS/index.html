@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABACUS – Count Understanding &amp; Generation</title>
+  <link rel="icon" href="./favicon.svg">
+  <link rel="canonical" href="https://mondalanindya.github.io/ABACUS/">
+  <meta name="description" content="ABACUS: A unified VLM bridging image count understanding and count-faithful generation. State-of-the-art across 7 benchmarks.">
+  <meta property="og:title" content="ABACUS">
+  <meta property="og:description" content="A unified VLM for count understanding and count-faithful image generation.">
+  <meta property="og:image" content="./static/teaser.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #fff;
+      color: #22262e;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+    sup { font-size: 0.72em; line-height: 0; }
+
+    /* ─── Token palette ────────────────────────────────────────── */
+    :root {
+      --blue:      #1a73e8;
+      --blue-dark: #1557b0;
+      --blue-faint: rgba(26,115,232,.07);
+      --text:      #22262e;
+      --muted:     #5a6275;
+      --light:     #8e96a5;
+      --border:    #e5e8ef;
+      --surface:   #f7f8fc;
+      --radius:    14px;
+      --shadow-sm: 0 1px 4px rgba(0,0,0,.06), 0 2px 10px rgba(0,0,0,.04);
+      --shadow-md: 0 4px 16px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+      --max-w:     1080px;
+    }
+
+    /* ─── Utility ──────────────────────────────────────────────── */
+    .wrap    { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 3rem 0; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-label {
+      display: inline-flex; align-items: center; gap: .45rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--blue);
+      background: var(--blue-faint); border: 1px solid rgba(26,115,232,.15);
+      padding: .28rem .75rem; border-radius: 100px; margin-bottom: .8rem;
+    }
+    .section-title {
+      font-size: clamp(1.35rem, 2vw, 1.7rem);
+      font-weight: 800; line-height: 1.2;
+      letter-spacing: -.02em; color: var(--text);
+      margin-bottom: .75rem;
+    }
+    .section-subtitle {
+      font-size: .97rem; color: var(--muted); max-width: 70ch; line-height: 1.7;
+    }
+    .text-center { text-align: center; }
+    .text-center .section-subtitle { margin: 0 auto; }
+
+    .fig-caption {
+      font-size: .78rem; color: var(--light); text-align: center;
+      font-style: italic; margin-top: .7rem; line-height: 1.5;
+    }
+
+    /* ─── Sticky Nav ───────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,.92); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: .85rem 2rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    }
+    .nav-logo { height: 1.85rem; object-fit: contain; }
+    .nav-links { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+    .nav-btn {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .5rem 1rem; border-radius: 8px;
+      font-size: .88rem; font-weight: 600; text-decoration: none;
+      color: var(--muted); border: 1px solid transparent;
+      transition: color .2s, background .2s, border-color .2s;
+    }
+    .nav-btn:hover { color: var(--blue); background: var(--blue-faint); border-color: rgba(26,115,232,.18); }
+    .nav-btn.primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .nav-btn.primary:hover { background: var(--blue-dark); border-color: var(--blue-dark); color: #fff; }
+
+    /* ─── Hero ─────────────────────────────────────────────────── */
+    .hero {
+      position: relative; overflow: hidden;
+      padding: 3.5rem 0 3rem;
+      background: linear-gradient(150deg, #f0f5ff 0%, #fafbff 55%, #f5f0ff 100%);
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 55% at 10% 50%,  rgba(26,115,232,.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 45% at 90% 60%,  rgba(120,60,200,.07) 0%, transparent 70%);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+    .hero-title {
+      font-size: clamp(2.2rem, 4.5vw, 3rem);
+      font-weight: 800; letter-spacing: -.04em; line-height: 1;
+      color: var(--blue); margin-bottom: .5rem;
+    }
+    .hero-subtitle {
+      font-size: clamp(.92rem, 1.4vw, 1.05rem);
+      color: var(--muted); max-width: 62ch; line-height: 1.6;
+      margin-bottom: 1.2rem; font-weight: 500;
+    }
+    .author-line { font-size: .9rem; line-height: 1.7; color: var(--muted); margin-bottom: .25rem; }
+    .author-line a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .author-line a:hover { text-decoration: underline; }
+    .affil-line { font-size: .82rem; color: var(--light); line-height: 1.6; }
+    .affil-line a { color: var(--muted); text-decoration: none; }
+    .affil-line a:hover { color: var(--blue); }
+
+    .btn-group { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .55rem 1.2rem; border-radius: 8px;
+      font-size: .88rem; font-weight: 700; text-decoration: none;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--blue); color: #fff;
+      box-shadow: 0 3px 10px rgba(26,115,232,.3);
+    }
+    .btn-primary:hover { background: var(--blue-dark); box-shadow: 0 5px 16px rgba(26,115,232,.38); }
+    .btn-ghost {
+      background: #fff; color: var(--blue);
+      border: 1.5px solid var(--blue);
+    }
+    .btn-ghost:hover { background: var(--blue); color: #fff; }
+    .btn-dark { background: #1a1a2e; color: #fff; }
+    .btn-dark:hover { background: #0f0f1a; }
+
+    /* ─── Image cards ──────────────────────────────────────────── */
+    .img-card {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow-md); background: var(--surface);
+    }
+    /* Default: natural ratio */
+    .img-card img { width: 100%; height: auto; display: block; }
+
+    /* Constrained-height variant — shows full image with letterbox */
+    .img-card.h-sm  img { width: 100%; height: 200px; object-fit: contain; background: var(--surface); }
+    .img-card.h-med img { width: 100%; height: 280px; object-fit: contain; background: var(--surface); }
+    .img-card.h-lg  img { width: 100%; height: 360px; object-fit: contain; background: var(--surface); }
+
+    /* ─── 2-col text + image layout ─────────────────────────────── */
+    .split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;
+    }
+    .split.flip { direction: rtl; }
+    .split.flip > * { direction: ltr; }
+    @media (max-width: 860px) { .split, .split.flip { grid-template-columns: 1fr; } }
+
+    /* ─── Card grid (features / methods) ────────────────────────── */
+    .card-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2rem;
+    }
+    @media (max-width: 760px) { .card-grid { grid-template-columns: 1fr; } }
+    .method-card {
+      background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius);
+      padding: 1.4rem 1.2rem; transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .method-card:hover { border-color: var(--blue); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .method-icon {
+      width: 2.2rem; height: 2.2rem; border-radius: 8px;
+      background: var(--blue-faint); display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--blue); margin-bottom: .8rem;
+    }
+    .method-title { font-size: .93rem; font-weight: 700; color: var(--text); margin-bottom: .4rem; }
+    .method-desc  { font-size: .83rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── Side-by-side galleries (portrait images) ──────────────── */
+    /*  Both gallery images are portrait (~0.80–0.92).
+        Fix their display height so columns are balanced and not too tall. */
+    .gallery-pair {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;
+    }
+    @media (max-width: 820px) { .gallery-pair { grid-template-columns: 1fr; } }
+    .gallery-panel { display: flex; flex-direction: column; gap: .6rem; }
+    .gallery-panel-label {
+      font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--blue); display: flex; align-items: center; gap: .4rem;
+    }
+    .gallery-panel-label::before { content: ''; width: .5rem; height: .5rem; background: var(--blue); border-radius: 50%; }
+
+    /* Gallery images capped: wide enough to read, not so tall they dominate */
+    .gallery-panel .img-card img {
+      width: 100%; height: 340px; object-fit: contain; background: #fff;
+    }
+
+    /* ─── Architecture layout ────────────────────────────────────── */
+    /* pipeline (1.19:1) left-large, density+objectness stacked right  */
+    .arch-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 2.5rem; align-items: start; }
+    @media (max-width: 860px) { .arch-grid { grid-template-columns: 1fr; } }
+
+    /* Pipeline image: cap height so it doesn't become a giant square */
+    .arch-pipeline img { width: 100%; max-height: 360px; object-fit: contain; background: var(--surface); }
+
+    /* Objectness is 3.54:1 (very wide, short). Density is 1.30:1.
+       Show them naturally — they'll be short inside the column. */
+    .arch-side { display: flex; flex-direction: column; gap: 1.5rem; }
+    .arch-side .img-card img { width: 100%; height: auto; }   /* natural ratio, not too tall */
+
+    /* ─── Prose ──────────────────────────────────────────────────── */
+    .prose { font-size: .95rem; color: var(--muted); line-height: 1.75; }
+    .prose + .prose { margin-top: .8rem; }
+    .prose strong { color: var(--text); font-weight: 700; }
+    .prose ul { padding-left: 1.3rem; margin-top: .6rem; }
+    .prose li { margin-bottom: .4rem; }
+    .prose li::marker { color: var(--blue); }
+
+    /* ─── Section divider ────────────────────────────────────────── */
+    hr.divider { border: none; border-top: 1px solid var(--border); }
+
+    /* ─── Footer ─────────────────────────────────────────────────── */
+    footer {
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: 3rem 2rem; text-align: center; color: var(--muted);
+    }
+    footer a { color: var(--blue); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-title { font-size: 1.5rem; font-weight: 800; color: var(--blue); margin-bottom: .5rem; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; font-size: .9rem; }
+
+    /* ─── Animations ─────────────────────────────────────────────── */
+    [data-fade] { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    [data-fade].visible { opacity: 1; transform: none; }
+
+    /* ─── Responsive ─────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .hero { padding: 3.5rem 0 2.5rem; }
+      .hero-title { font-size: 2.4rem; }
+      .nav-inner { flex-direction: column; gap: .6rem; }
+      .nav-links  { justify-content: center; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════ NAV ════════════════════════════════════════════════════════ -->
+<nav class="nav" aria-label="Site navigation">
+  <div class="nav-inner">
+    <span style="display:inline-flex; align-items:center; gap:.45rem; font-size:1.25rem; font-weight:800; color:var(--blue); letter-spacing:-.02em; text-decoration:none;">
+      <span style="font-size:1.5rem; line-height:1;">🧮</span>ABACUS
+    </span>
+    <div class="nav-links">
+      <a href="https://arxiv.org/abs/2604.24300" target="_blank" rel="noopener" class="nav-btn primary">
+        <i class="fa-regular fa-file-lines"></i> Paper
+      </a>
+      <a href="https://github.com/mondalanindya/ABACUS_NeurIPS_26" target="_blank" rel="noopener" class="nav-btn">
+        <i class="fa-brands fa-github"></i> Code
+      </a>
+      <a href="#method" class="nav-btn"><i class="fa-solid fa-cube"></i> Method</a>
+      <a href="#results" class="nav-btn"><i class="fa-solid fa-images"></i> Results</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ════ HERO ════════════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <h1 class="hero-title">ABACUS</h1>
+    <p class="hero-subtitle">Adapting Unified Foundation Models for Bridging Image Count Understanding and Generation</p>
+
+    <p class="author-line">
+      <a href="https://mondalanindya.github.io/" target="_blank">Anindya Mondal</a><sup>1</sup>,&ensp;
+      <a href="https://sauradip-nag.github.io/" target="_blank">Sauradip Nag</a><sup>2</sup>,&ensp;
+      <a href="https://www.surrey.ac.uk/people/anjan-dutta" target="_blank">Anjan Dutta</a><sup>1</sup>
+    </p>
+    <p class="affil-line">
+      <sup>1</sup>&thinsp;<a href="https://www.surrey.ac.uk/" target="_blank">University of Surrey</a>
+      &emsp;
+      <sup>2</sup>&thinsp;<a href="https://www.sfu.ca/" target="_blank">Simon Fraser University</a>
+    </p>
+
+    <div class="btn-group">
+      <a href="https://arxiv.org/abs/2604.24300" target="_blank" rel="noopener" class="btn btn-primary">
+        <i class="fa-regular fa-file-lines"></i> ArXiv Paper
+      </a>
+      <a href="https://github.com/mondalanindya/ABACUS_NeurIPS_26" target="_blank" rel="noopener" class="btn btn-dark">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ════ TEASER ══════════════════════════════════════════════════════ -->
+<div class="wrap" style="padding-top: 2.5rem; padding-bottom: 2.5rem;" data-fade>
+  <div class="img-card">
+    <img src="static/teaser.jpg" alt="ABACUS overview: count understanding (sparse to dense) and count-faithful generation" loading="eager">
+  </div>
+  <p class="fig-caption">
+    <strong>Fig. 1.</strong> ABACUS unifies count understanding (left) — handling sparse, moderate and extremely dense scenes — with count-faithful generation (right), producing images that exactly match a specified count.
+  </p>
+</div>
+
+<hr class="divider">
+
+<!-- ════ ABSTRACT ════════════════════════════════════════════════════ -->
+<section class="section" id="abstract">
+  <div class="wrap">
+    <div class="split" data-fade>
+      <div>
+        <span class="section-label"><i class="fa-solid fa-book-open"></i> Abstract</span>
+        <h2 class="section-title">One model. Four tasks. Zero benchmark-specific tuning.</h2>
+        <p class="prose">
+          ABACUS is a unified VLM built on a 3B-parameter foundation model that simultaneously handles
+          <strong>object counting</strong>, <strong>crowd counting</strong>,
+          <strong>referring-expression counting</strong>, and
+          <strong>count-faithful image generation</strong> — with no benchmark-specific training.
+        </p>
+        <p class="prose" style="margin-top:1rem;">
+          Three complementary innovations drive the model:
+        </p>
+        <ul class="prose" style="margin-top:.6rem; padding-left:1.4rem;">
+          <li><strong>Density-aware adaptive zooming</strong> with objectness maps for spatial grounding</li>
+          <li><strong>Boundary-aware count policy</strong> via GRPO to eliminate crop-edge errors</li>
+          <li><strong>Cycle-consistent GRPO</strong> — the understanding branch self-critiques generated outputs, closing the understanding–generation gap with no external labels</li>
+        </ul>
+        <p class="prose" style="margin-top:1rem;">
+          The result: <strong>state-of-the-art across 7 benchmarks</strong>, outperforming both task-specific specialists and larger generalist models.
+        </p>
+      </div>
+      <div>
+        <div class="img-card h-lg">
+          <img src="static/issues.jpg" alt="Problems in existing count generation and understanding systems" loading="lazy">
+        </div>
+        <p class="fig-caption">
+          <strong>Fig. 2.</strong> (a) Diffusion models produce wrong cardinalities.
+          (b) VLMs default to coarse estimates on dense scenes.
+          (c) Unified models show a synergy gap: correct counting ≠ correct generation.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ METHOD ══════════════════════════════════════════════════════ -->
+<section class="section" id="method">
+  <div class="wrap">
+    <div class="text-center" data-fade>
+      <span class="section-label"><i class="fa-solid fa-gears"></i> Method</span>
+      <h2 class="section-title">How ABACUS Works</h2>
+      <p class="section-subtitle">Three targeted innovations on top of a frozen foundation model.</p>
+    </div>
+
+    <div class="card-grid" data-fade>
+      <div class="method-card">
+        <div class="method-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+        <div class="method-title">Density-Aware Adaptive Zooming</div>
+        <div class="method-desc">Generates an objectness map to locate potential instances, then crops and re-processes high-density sub-regions at higher resolution before aggregating counts.</div>
+      </div>
+      <div class="method-card">
+        <div class="method-icon"><i class="fa-solid fa-border-top-left"></i></div>
+        <div class="method-title">Boundary-Aware Count Policy</div>
+        <div class="method-desc">GRPO reward penalises splits of the same object across crop boundaries, eliminating the systematic double-counting artefact that plagues tiled counting approaches.</div>
+      </div>
+      <div class="method-card">
+        <div class="method-icon"><i class="fa-solid fa-arrows-spin"></i></div>
+        <div class="method-title">Cycle-Consistent GRPO</div>
+        <div class="method-desc">The understanding branch verifies whether generated images match the requested count, providing a self-supervised reward signal that closes the understanding–generation gap.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PIPELINE ════════════════════════════════════════════════════ -->
+<section class="section" style="background: var(--surface);">
+  <div class="wrap">
+    <div class="arch-grid" data-fade>
+      <!-- Pipeline image: 1300×1095 (1.19:1, near-square) — cap height -->
+      <div>
+        <div class="img-card arch-pipeline">
+          <img src="static/pipeline.jpg" alt="ABACUS full model pipeline" loading="lazy">
+        </div>
+        <p class="fig-caption">
+          <strong>Fig. 3.</strong> ABACUS pipeline: objectness-guided adaptive zooming feeds into a boundary-aware GRPO counter, which in turn supervises the generation branch through cycle-consistent self-reward.
+        </p>
+      </div>
+      <!-- Density (1.30:1) + Objectness (3.54:1) stacked naturally -->
+      <div class="arch-side">
+        <div>
+          <div class="img-card">
+            <img src="static/density.jpg" alt="Density-aware adaptive zooming module" loading="lazy">
+          </div>
+          <p class="fig-caption"><strong>Density zooming</strong> — sub-region selection by objectness.</p>
+        </div>
+        <div>
+          <div class="img-card">
+            <img src="static/objectness.jpg" alt="Objectness maps for spatial grounding" loading="lazy">
+          </div>
+          <p class="fig-caption"><strong>Objectness maps</strong> — instance-aware spatial grounding.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ RESULTS ═════════════════════════════════════════════════════ -->
+<section class="section" id="results">
+  <div class="wrap">
+    <div class="text-center" data-fade>
+      <span class="section-label"><i class="fa-solid fa-chart-bar"></i> Results</span>
+      <h2 class="section-title">State-of-the-Art Across 7 Benchmarks</h2>
+      <p class="section-subtitle">
+        ABACUS outperforms task-specific specialists and larger generalist models on every benchmark — without benchmark-specific training.
+      </p>
+    </div>
+
+    <!-- Side-by-side galleries — both portrait, height-capped to 420px so columns stay balanced -->
+    <div class="gallery-pair" style="margin-top:2rem;" data-fade>
+      <div class="gallery-panel">
+        <span class="gallery-panel-label">Count Understanding</span>
+        <div class="img-card">
+          <img src="static/understanding_gallery.jpg"
+               alt="ABACUS count understanding gallery: diverse categories from sparse (GT=1) to dense (GT=261)"
+               loading="lazy">
+        </div>
+        <p class="fig-caption">
+          <strong>Fig. 4.</strong> ABACUS predictions (green) vs. ground truth across FSC-147, CARPK, and ShanghaiTech. Handles sparse pencils (GT: 1) to dense go-stones (GT: 261) from text-only prompts.
+          <a href="static/understanding_gallery.jpg" target="_blank" style="color:var(--blue); text-decoration:none; margin-left:.3rem; font-style:normal; font-weight:600;">↗ Full size</a>
+        </p>
+      </div>
+      <div class="gallery-panel">
+        <span class="gallery-panel-label">Count-Faithful Generation</span>
+        <div class="img-card">
+          <img src="static/generation_gallery.jpg"
+               alt="ABACUS count-faithful generation gallery: exact counts with naturalistic arrangement"
+               loading="lazy">
+        </div>
+        <p class="fig-caption">
+          <strong>Fig. 5.</strong> Generated images match the exact requested count while maintaining naturalistic spatial arrangements. No grid patterns, no mode collapse.
+          <a href="static/generation_gallery.jpg" target="_blank" style="color:var(--blue); text-decoration:none; margin-left:.3rem; font-style:normal; font-weight:600;">↗ Full size</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CITATION ════════════════════════════════════════════════════ -->
+<section class="section" style="background: var(--surface);">
+  <div class="wrap" style="max-width: 720px;" data-fade>
+    <div class="text-center">
+      <span class="section-label"><i class="fa-solid fa-quote-right"></i> Citation</span>
+      <h2 class="section-title">Cite ABACUS</h2>
+    </div>
+    <pre style="
+      background:#1a1a2e; color:#c9d1d9; padding:1.4rem 1.6rem;
+      border-radius:var(--radius); font-size:.82rem; line-height:1.7;
+      overflow-x:auto; margin-top:1.5rem; white-space:pre-wrap; word-break:break-word;
+    "><code>    @article{mondal2026abacus,
+  title   = {ABACUS: Adapting Unified Foundation Model for
+             Bridging Image Count Understanding and Generation},
+  author  = {Mondal, Anindya and Nag, Sauradip and Dutta, Anjan},
+      journal = {arXiv preprint},
+  year    = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<!-- ════ FOOTER ══════════════════════════════════════════════════════ -->
+<footer>
+  <p class="footer-title">ABACUS</p>
+  <p style="font-size:.92rem;">
+    <a href="https://www.surrey.ac.uk/" target="_blank">University of Surrey</a> &amp;
+    <a href="https://www.sfu.ca/" target="_blank">Simon Fraser University</a>
+  </p>
+  <div class="footer-links">
+    <a href="https://arxiv.org/abs/2604.24300" target="_blank"><i class="fa-regular fa-file-lines"></i> Paper</a>
+    <a href="https://github.com/mondalanindya/ABACUS_NeurIPS_26" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+    <a href="mailto:a.mondal@surrey.ac.uk"><i class="fa-solid fa-envelope"></i> Contact</a>
+  </div>
+  <p style="font-size:.78rem; color:var(--light); margin-top:1.5rem;">
+    &copy; 2026 ABACUS Authors. All rights reserved.
+  </p>
+</footer>
+
+<script>
+  // Scroll-triggered fade-in
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('[data-fade]').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
